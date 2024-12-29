@@ -2,8 +2,10 @@
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
-import { IoSearchOutline } from "react-icons/io5"
+import { IoGridOutline, IoSearchOutline } from "react-icons/io5"
+import { RiHeart3Line, RiHomeLine, RiUser3Line } from "react-icons/ri";
 
 
 export const TopMenu = () => {
@@ -15,33 +17,66 @@ export const TopMenu = () => {
         const isActive = (path: string): boolean => pathname === path;
 
 
+        const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+        useEffect(() => {
+        // Función que se ejecuta cada vez que cambia el tamaño de la ventana
+        const handleResize = () => {
+        setIsSmallScreen(window.innerWidth < 800);
+        };
+
+        // Agregar un event listener para detectar cambios en el tamaño de la ventana
+        window.addEventListener('resize', handleResize);
+
+        // Limpiar el event listener cuando el componente se desmonta
+        return () => {
+        window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+
     return (
-        <nav className="top_menu_container"
-            style={{ backgroundColor: 'var(--c-blue-500)' }}
-        >
+        <>
+        <nav className="top_menu_container">
             {/* logo  */}
             <div>
                 <Link
                     href='/'>
                         
-                        <Image src='/imgs/logoM.png' 
-                        alt='logo'
-                        width={100}
-                        height={100}
-                        priority
-                        />
+                        {/* Mostrar logo según el tamaño de la pantalla */}
+                            {isSmallScreen ? (
+                                
+                                <Image 
+                                    className="top_menu_logo"
+                                    src='/imgs/solo.png' 
+                                    alt='logo'
+                                    width={100}
+                                    height={100}
+                                    priority
+                                    />
+                            ) : (
+                                <Image
+                                    className="top_menu_logo"
+                                    src='/imgs/logoM.png' 
+                                    alt='logo'
+                                    width={100}
+                                    height={100}
+                                    priority
+                                    />
+                            )}
+
                 </Link>
             </div>
             {/* center menu  */}
-            <div>
+            <div className="center_menu">
                 <Link className={`nav-item ${isActive('/') ? 'active' : ''}`} href='/'>Home</Link>
 
-                <Link className={`nav-item ${isActive('/category/favorito') ? 'active' : ''}`} href='/category/favorito'>Categoria</Link>
+                <Link className={`nav-item ${isActive('/category/favorito') ? 'active' : ''}`} href='/category/abc'>Categoria</Link>
 
                 <Link className={`nav-item ${isActive('/favorite') ? 'active' : ''}`} href='/favorite'>Favoritos</Link>
                 
             </div>
-            {/* Search, Cart, Menu  */}
+            {/* Search, Menu  */}
             <div className="flex items-center">
                 <Link href='/search' className="mx-2">
                     <IoSearchOutline className="w-5 h-5"/>
@@ -57,5 +92,34 @@ export const TopMenu = () => {
                 </button>
             </div>
         </nav>
+
+        <nav>
+            <footer className="menu">
+                <div className="menu-inner">
+                    <Link 
+                        className={`nav-item ${isActive('/') ? 'active' : ''}`} href='/' >
+                        <RiHomeLine />
+                    </Link>
+
+                    <Link 
+                        className={`nav-item ${isActive('/category/favorito') ? 'active' : ''}`} href='/category/genero'>
+                        
+                        <IoGridOutline />
+                    </Link>
+                    <Link 
+                        className={`nav-item ${isActive('/favorite') ? 'active' : ''}`} href='/favorite'>
+                        <RiHeart3Line />
+                        
+                    </Link>
+
+                    <Link 
+                        className={`nav-item ${isActive('/user') ? 'active' : ''}`} href='/user'>
+                        <RiUser3Line />
+                        
+                    </Link>
+                </div>
+            </footer>
+        </nav>
+        </>
     )
 }
