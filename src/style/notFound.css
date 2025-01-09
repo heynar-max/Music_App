@@ -1,0 +1,89 @@
+.error-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+    height: 800px;
+    width: 100%;
+}
+
+.error-text {
+text-align: center;
+padding: 1.25rem;
+margin: 1.25rem;
+}
+
+.error-title {
+margin-top: 5rem;
+font-size: 9rem; 
+font-family: sans-serif; 
+-webkit-font-smoothing: antialiased; 
+}
+
+.error-message {
+font-weight: 600;
+font-size: 1.25rem; 
+}
+
+.error-submessage {
+font-weight: 300; 
+}
+
+.error-link {
+font-weight: 400;
+text-decoration: none;
+transition: all 0.3s ease-in-out;
+color: var(--c-red-500);
+}
+
+.error-link:hover {
+text-decoration: underline;
+}
+
+.error-image {
+padding: 1.25rem;
+margin: 1.25rem;
+}
+
+.image-style {
+padding: 1.25rem; 
+width: 500px;
+}
+
+@media screen and (max-width:800px){
+    .error-container {
+        flex-direction: column-reverse;
+        margin-top: 0rem;
+        align-items: center;
+    }
+    .error-image {
+        margin-top: -5rem;
+        }
+    
+    .error-text {
+        margin-top: -5rem;
+        }
+
+        .error-title {
+            margin-top: 2rem;
+            }
+}
+
+@media screen and (max-width:550px){
+    .error-image {
+        margin-top: -15rem;
+        }
+        .error-title {
+            margin-top: 2rem;
+            font-size: 7rem; 
+            }
+.image-style {
+    padding: 0;
+}
+}
+@media screen and (max-width:450px){
+    
+        .error-title {
+            font-size: 5rem;
+            }
+
+}

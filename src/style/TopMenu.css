@@ -6,7 +6,10 @@
     align-items: center;      
     width: 100%;
     background-color: var(--c-blue-500);
-    
+    position: sticky;
+    align-items: center;
+    top: 0;
+    z-index: 1;
 }
 
 .top_menu_logo{

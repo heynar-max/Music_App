@@ -48,6 +48,7 @@ export const TopMenu = () => {
                                 
                                 <Image 
                                     className="top_menu_logo"
+                                    // src='/imgs/logoM.png' 
                                     src='/imgs/solo.png' 
                                     alt='logo'
                                     width={100}
@@ -57,6 +58,7 @@ export const TopMenu = () => {
                             ) : (
                                 <Image
                                     className="top_menu_logo"
+                                    // src='/imgs/solo.png' 
                                     src='/imgs/logoM.png' 
                                     alt='logo'
                                     width={100}
