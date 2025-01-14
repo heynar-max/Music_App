@@ -6,7 +6,9 @@ export default function MusicLayout({children}: {
     return (
         <div className="min-h-screen ">
             <TopMenu/>
-            {children}
+            <div className="px-0 sm:px-5 flex justify-center">
+                {children}                
+            </div>
         </div>
     );
 }

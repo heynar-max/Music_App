@@ -1,0 +1,30 @@
+.custom-container {
+    margin-top: 0.75rem; /* mt-3 */
+    width: 85%; /* w-[85%] */
+    margin-left: auto; /* Centra el ancho */
+    margin-right: auto;
+}  
+.custom-title-page {
+    font-family: sans-serif; /* antialiased */
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 500; /* font-semibold */
+    margin: 2.5rem 0; /* my-10 */
+    text-align: center; /* text-center */
+}  
+.custom-title {
+    font-family: sans-serif; /* antialiased */
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 600; /* font-semibold */
+    margin: 1.25rem 0; /* my-5 */
+}
+
+.custom-subtitle {
+    font-size: 1.25rem; /* text-xl */
+    margin-bottom: 1.25rem; /* mb-5 */
+}
+
+@media screen and (max-width:800px){
+    .custom-container{
+        margin-top: -5rem;
+    }
+}
