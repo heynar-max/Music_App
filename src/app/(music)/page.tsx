@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Title } from "@/components";
+import { AlbumIU, ArtistIU, SongIU, Title } from "@/components";
 import { RiSearchLine } from "react-icons/ri";
+
 
 export default function Home() {
   // Estado para manejar la página activa
@@ -83,26 +84,37 @@ function DescriptionPage() {
 function SongPage() {
   return (
     <div>
-      <h1>Canciones</h1>
-      <p>Esta es la página de canciones.</p>
+      <SongIU/>
     </div>
   );
 }
 
 function AlbumPage() {
   return (
-    <div>
-      <h1>Álbum</h1>
-      <p>Esta es la página de álbumes.</p>
+    <div className="cards__card">
+      <AlbumIU index={1}/>
+      <AlbumIU index={0}/>
+      <AlbumIU index={1}/>
+      <AlbumIU index={0}/>
+      <AlbumIU index={1}/>
+      <AlbumIU index={0}/>
+      <AlbumIU index={1}/>
+      <AlbumIU index={0}/>
     </div>
   );
 }
 
 function ArtistPage() {
   return (
-    <div>
-      <h1>Artistas</h1>
-      <p>Esta es la página de artistas.</p>
+    <div className="cards__card">
+      <ArtistIU index={1}  />
+      <ArtistIU index={0} />
+      <ArtistIU index={1}  />
+      <ArtistIU index={0} />
+      <ArtistIU index={1}  />
+      <ArtistIU index={0} />
+      <ArtistIU index={1}  />
+      <ArtistIU index={0} />
     </div>
   );
 }
