@@ -1,4 +1,6 @@
 'use client'; 
+
+import { useUIStore } from "@/store";
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation";
@@ -33,6 +35,8 @@ export const TopMenu = () => {
         window.removeEventListener('resize', handleResize);
         };
     }, []);
+
+    const openSideMenu = useUIStore( state => state.openSideMenu)
 
 
     return (
@@ -84,7 +88,9 @@ export const TopMenu = () => {
                     <IoSearchOutline className="w-5 h-5"/>
                 </Link>
                 
-                <button className="avatar">
+                <button className="avatar"
+                    onClick={ openSideMenu }
+                >
                 <Image className="image_avatar" src='https://res.cloudinary.com/dzty81hol/image/upload/v1735351564/q2jeo64q4acwoj9vick5.jpg' 
                         alt='logo'
                         width={100}
