@@ -31,3 +31,10 @@ body {
 	font-family: "Urbanist", sans-serif;
 	background-color: var(--c--white);
 }
+
+p {
+	font-size: 1rem;
+	margin-bottom: 2rem;
+	color: var(--c-gray-500);
+	margin-top: 0.375em;
+}

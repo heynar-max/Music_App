@@ -18,7 +18,7 @@ export const Title = ({titlepagina, title, subtitle, className }: Props) => {
             </h1>
                 {
                     subtitle && (
-                    <h3 className="custom-subtitle">{subtitle}</h3>
+                    <p className="custom-subtitle">{subtitle}</p>
                     )
                 }
         </div>

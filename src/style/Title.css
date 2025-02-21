@@ -10,21 +10,31 @@
     font-weight: 500; /* font-semibold */
     margin: 2.5rem 0; /* my-10 */
     text-align: center; /* text-center */
+    margin-top: 0em;
 }  
 .custom-title {
     font-family: sans-serif; /* antialiased */
     font-size: 1.25rem; /* text-xl */
-    font-weight: 600; /* font-semibold */
+    font-weight: 700; /* font-semibold */
     margin: 1.25rem 0; /* my-5 */
+    margin-top: -1em;
 }
 
 .custom-subtitle {
-    font-size: 1.25rem; /* text-xl */
+    font-size: 1rem; /* text-xl */
     margin-bottom: 1.25rem; /* mb-5 */
 }
 
 @media screen and (max-width:800px){
     .custom-container{
-        margin-top: -5rem;
+        margin-top: -3rem;
+    }
+    .custom-title {
+        margin-top: -1em;
+    }
+    .custom-subtitle {
+        font-size: 1rem; /* text-xl */
+        margin-bottom: .5rem;
+        margin-top: -1em;
     }
 }
