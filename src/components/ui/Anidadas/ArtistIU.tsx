@@ -1,50 +1,82 @@
 import Image from 'next/image';
-import React from 'react'
+import Link from 'next/link';
+import React from 'react';
 import { RiPlayCircleFill } from 'react-icons/ri';
+import { filterSongs } from '@/helpers/filtersongs';
+import { songs } from '@/seed/seed';
 
-interface ArtistIUProps {
-    index: number; // Pasar el índice como prop
+interface Playlist {
+    id: string;
+    cover: string;
+    artists: string[];
+    albumId: number;
 }
 
+interface CardArtistProps {
+    playlist: Playlist;
+    index: number;
+}
 
-export const ArtistIU :React.FC<ArtistIUProps> = ({ index }) => {
+const MAX_ARTISTS_LENGTH = 20; // Longitud máxima antes de truncar
+
+export const CardArtist: React.FC<CardArtistProps> = ({ playlist, index }) => {
+    const { id, cover, artists } = playlist;
 
     // Determinar si el índice es par o impar
     const isEvenIndex = index % 2 === 0;
 
-    return (
-        <article
-                className="card"
-                style={{
-                transform: `rotate(${isEvenIndex ? '5deg' : '-5deg'})`, // Usar transform directamente
-                }}
-            >
-                        
-                        <div className={`card-inner ${isEvenIndex ? 'even' : 'odd'}`} >
-                    <span className="card-pin" 
-                        style={{ 
-                            top: '20px', 
-                            left: index % 2 === 0 ? '20px' : 'calc(50% - 6px)', 
-                            transform: index % 2 === 0 ? 'rotate(-5deg)' : 'rotate(0)' }}>
-                    </span>
+    // Filtrar las canciones de la playlist
+    const playListSongs = filterSongs(songs, playlist.albumId);
 
-                    <div className="card-image">
-                    <Image src="https://res.cloudinary.com/dzty81hol/image/upload/v1697931368/lalfctbpxmrfvuappaxq.jpg" 
-                            alt='logo'
-                            width={100}
-                            height={100}
-                            priority/>
-                    </div>
-                    <div className="card-content">
-                    <div className="card-meta">
-                        <span className="card-meta-number">14 canciones</span>
-                            <button className="card-meta-button">
-                                <RiPlayCircleFill className="iplay"/>
-                            </button>
-                    </div>
-                    <h2 className="card-title">Heroes del Silencio</h2>
-                    </div>
+    // Función para truncar el texto si es demasiado largo
+    const truncateText = (text: string, maxLength: number): string => {
+        return text.length > maxLength ? `${text.substring(0, maxLength)}...` : text;
+    };
+
+    // Formatear la lista de artistas
+    const artistsString = truncateText(artists.join(', '), MAX_ARTISTS_LENGTH);
+
+    return (
+        <Link href={`/${id}`} className="card_link">
+        <article
+            className="card"
+            style={{
+            transform: `rotate(${isEvenIndex ? '5deg' : '-5deg'})`, // Usar transform directamente
+            }}
+        >
+            <div className={`card-inner ${isEvenIndex ? 'even' : 'odd'}`}>
+            <span
+                className="card-pin"
+                style={{
+                top: '20px',
+                left: isEvenIndex ? '20px' : 'calc(50% - 6px)',
+                transform: isEvenIndex ? 'rotate(-5deg)' : 'rotate(0)',
+                }}
+            ></span>
+
+            <div className="card-image">
+                <Image
+                src={cover}
+                alt={artistsString}
+                width={100}
+                height={100}
+                priority
+                />
+            </div>
+
+            <div className="card-content">
+                <div className="card-meta">
+                <span className="card-meta-number">
+                    {playListSongs.length} canciones
+                </span>
+                <button className="card-meta-button">
+                    <RiPlayCircleFill className="iplay" />
+                </button>
                 </div>
-            </article>
-    )
-}
+                <h2 className="card-title">{artistsString}</h2>
+            </div>
+            </div>
+        </article>
+        </Link>
+    );
+};

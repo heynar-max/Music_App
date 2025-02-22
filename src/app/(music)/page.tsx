@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { AlbumIU, ArtistIU, SongIU, Title } from "@/components";
+import { AlbumIU,  CardArtist,  SongIU, Title } from "@/components";
 import { RiSearchLine } from "react-icons/ri";
+import { playlists } from "@/seed/seed";
 
 
 export default function Home() {
@@ -107,14 +108,9 @@ function AlbumPage() {
 function ArtistPage() {
   return (
     <div className="cards__card">
-      <ArtistIU index={1}  />
-      <ArtistIU index={0} />
-      <ArtistIU index={1}  />
-      <ArtistIU index={0} />
-      <ArtistIU index={1}  />
-      <ArtistIU index={0} />
-      <ArtistIU index={1}  />
-      <ArtistIU index={0} />
+      {playlists.map((playlist, index) => (
+        <CardArtist key={playlist.id} playlist={playlist} index={index} />
+      ))}
     </div>
   );
 }
