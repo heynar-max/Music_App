@@ -17,4 +17,5 @@ export interface Song {
     album: string;
     duration: string;
     genre?: string;
+    audioUrl: string;
 }

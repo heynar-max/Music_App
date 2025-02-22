@@ -2,8 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { RiPlayCircleFill } from 'react-icons/ri';
-import { filterSongs } from '@/helpers/filtersongs';
-import { songs } from '@/seed/seed';
+;
 
 interface Playlist {
     id: string;
@@ -25,8 +24,6 @@ export const CardArtist: React.FC<CardArtistProps> = ({ playlist, index }) => {
     // Determinar si el índice es par o impar
     const isEvenIndex = index % 2 === 0;
 
-    // Filtrar las canciones de la playlist
-    const playListSongs = filterSongs(songs, playlist.albumId);
 
     // Función para truncar el texto si es demasiado largo
     const truncateText = (text: string, maxLength: number): string => {
@@ -41,9 +38,9 @@ export const CardArtist: React.FC<CardArtistProps> = ({ playlist, index }) => {
         <article
             className="card"
             style={{
-            transform: `rotate(${isEvenIndex ? '5deg' : '-5deg'})`, // Usar transform directamente
-            }}
-        >
+                '--rotation': `${index % 2 === 0 ? '5deg' : '-5deg'}`,
+              } as React.CSSProperties} // Asegurar a TypeScript que es válido
+            >
             <div className={`card-inner ${isEvenIndex ? 'even' : 'odd'}`}>
             <span
                 className="card-pin"
@@ -66,9 +63,7 @@ export const CardArtist: React.FC<CardArtistProps> = ({ playlist, index }) => {
 
             <div className="card-content">
                 <div className="card-meta">
-                <span className="card-meta-number">
-                    {playListSongs.length} canciones
-                </span>
+                
                 <button className="card-meta-button">
                     <RiPlayCircleFill className="iplay" />
                 </button>

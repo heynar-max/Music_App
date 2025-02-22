@@ -68,6 +68,7 @@ export const songs: Song[] = [
     album: "Mas Alla De La Realidad",
     duration: "4:00",
     genre: "Rock Español",
+    audioUrl: "/music/1/1.mp3"
 },
 {
     id: 2,
@@ -77,7 +78,8 @@ export const songs: Song[] = [
     artists: ["Akash"],
     album: "Mas Alla De La Realidad",
     duration: "3:51",
-    genre: "Rock Español"
+    genre: "Rock Español",
+    audioUrl: "/music/1/2.mp3"
 },
 {
     id: 3,
@@ -87,10 +89,11 @@ export const songs: Song[] = [
     artists: ["Akash"],
     album: "Mas Alla De La Realidad",
     duration: "6:46",
-    genre: "Rock Español"
+    genre: "Rock Español",
+    audioUrl: "/music/1/3.mp3"
 },
 {
-    id: 1,
+    id: 4,
     albumId: 2,
     title: "I Wanna Be Yours",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233474/bbazezygjc6isnmsaikk.jpg",
@@ -98,9 +101,10 @@ export const songs: Song[] = [
     album: "AM",
     duration: "3:04",
     genre: "Rock",
+    audioUrl: "/music/2/4.mp3"
 },
 {
-    id: 2,
+    id: 5,
     albumId: 2,
     title: "Why'd You Only Call Me When You're High?",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233474/bbazezygjc6isnmsaikk.jpg",
@@ -108,9 +112,10 @@ export const songs: Song[] = [
     album: "AM",
     duration: "2:41",
     genre: "Rock",
+    audioUrl: "/music/2/5.mp3"
 },
 {
-    id: 3,
+    id: 6,
     albumId: 2,
     title: "Do I Wanna Know?",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233474/bbazezygjc6isnmsaikk.jpg",
@@ -118,9 +123,10 @@ export const songs: Song[] = [
     album: "AM",
     duration: "2:21",
     genre: "Rock",
+    audioUrl: "/music/2/6.mp3"
 },
 {
-    id: 4,
+    id: 7,
     albumId: 2,
     title: "Snap Out Of It",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233474/bbazezygjc6isnmsaikk.jpg",
@@ -128,9 +134,10 @@ export const songs: Song[] = [
     album: "AM",
     duration: "3:16",
     genre: "Rock",
+    audioUrl: "/music/2/7.mp3"
 },
 {
-    id: 5,
+    id: 8,
     albumId: 2,
     title: "505",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233474/bbazezygjc6isnmsaikk.jpg",
@@ -138,9 +145,10 @@ export const songs: Song[] = [
     album: "AM",
     duration: "3:16",
     genre: "Rock",
+    audioUrl: "/music/2/8.mp3"
 },
 {
-    id: 1,
+    id: 9,
     albumId: 3,
     title: "Deshacer el Mundo",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1697931368/lalfctbpxmrfvuappaxq.jpg",
@@ -148,9 +156,10 @@ export const songs: Song[] = [
     album: "Avalancha",
     duration: "4:47",
     genre: "Rock Español",
+    audioUrl: "/music/3/9.mp3"
 },
 {
-    id: 2,
+    id: 10,
     albumId: 3,
     title: "En los Brazos de la Fiebre",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1697931368/lalfctbpxmrfvuappaxq.jpg",
@@ -158,9 +167,10 @@ export const songs: Song[] = [
     album: "Avalancha",
     duration: "4:45",
     genre: "Rock Español",
+    audioUrl: "/music/3/10.mp3"
 },
 {
-    id: 3,
+    id: 11,
     albumId: 3,
     title: "Iberia Sumergida",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1697931368/lalfctbpxmrfvuappaxq.jpg",
@@ -168,9 +178,10 @@ export const songs: Song[] = [
     album: "Avalancha",
     duration: "5:17",
     genre: "Rock Español",
+    audioUrl: "/music/3/11.mp3"
 },
 {
-    id: 4,
+    id: 12,
     albumId: 3,
     title: "La Chispa Adecuada",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1697931368/lalfctbpxmrfvuappaxq.jpg",
@@ -178,9 +189,10 @@ export const songs: Song[] = [
     album: "Avalancha",
     duration: "5:27",
     genre: "Rock Español",
+    audioUrl: "/music/3/12.mp3"
 },
 {
-    id: 5,
+    id: 13,
     albumId: 3,
     title: "Opio",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1697931368/lalfctbpxmrfvuappaxq.jpg",
@@ -188,9 +200,10 @@ export const songs: Song[] = [
     album: "Avalancha",
     duration: "6:18",
     genre: "Rock Español",
+    audioUrl: "/music/3/13.mp3"
 },
 {
-    id: 1,
+    id: 14,
     albumId: 4,
     title: "Dime que Si",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1740187720/pc8scxqhmqo2qm0ku7rd.jpg",
@@ -198,9 +211,10 @@ export const songs: Song[] = [
     album: "Adentro",
     duration: "3:00",
     genre: "Rock Español",
+    audioUrl: "/music/4/14.mp3"
 },
 {
-    id: 2,
+    id: 15,
     albumId: 4,
     title: "Estrellas",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1740187720/pc8scxqhmqo2qm0ku7rd.jpg",
@@ -208,9 +222,10 @@ export const songs: Song[] = [
     album: "Adentro",
     duration: "4:41",
     genre: "Rock Español",
+    audioUrl: "/music/4/15.mp3"
 },
 {
-    id: 3,
+    id: 16,
     albumId: 4,
     title: "No Más",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1740187720/pc8scxqhmqo2qm0ku7rd.jpg",
@@ -218,9 +233,10 @@ export const songs: Song[] = [
     album: "Adentro",
     duration: "3:14",
     genre: "Rock Español",
+    audioUrl: "/music/4/16.mp3"
 },
 {
-    id: 4,
+    id: 17,
     albumId: 4,
     title: "Por Siempre",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1740187720/pc8scxqhmqo2qm0ku7rd.jpg",
@@ -228,9 +244,10 @@ export const songs: Song[] = [
     album: "Adentro",
     duration: "4:18",
     genre: "Rock Español",
+    audioUrl: "/music/4/17.mp3"
 },
 {
-    id: 5,
+    id: 18,
     albumId: 4,
     title: "Tal Vez",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1740187720/pc8scxqhmqo2qm0ku7rd.jpg",
@@ -238,9 +255,10 @@ export const songs: Song[] = [
     album: "Adentro",
     duration: "3:45",
     genre: "Rock Español",
+    audioUrl: "/music/4/18.mp3"
 },
 {
-    id: 1,
+    id: 19,
     albumId: 5,
     title: "Fuego En Mis Venas",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233673/j6x4oor8lhfd5j8yeoa4.jpg",
@@ -248,9 +266,10 @@ export const songs: Song[] = [
     album: "Kronos Exitos",
     duration: "5:20",
     genre: "Rock Español",
+    audioUrl: "/music/5/19.mp3"
 },
 {
-    id: 2,
+    id: 20,
     albumId: 5,
     title: "Igual Que Ayer",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233673/j6x4oor8lhfd5j8yeoa4.jpg",
@@ -258,9 +277,10 @@ export const songs: Song[] = [
     album: "Kronos Exitos",
     duration: "4:06",
     genre: "Rock Español",
+    audioUrl: "/music/5/20.mp3"
 },
 {
-    id: 3,
+    id: 21,
     albumId: 5,
     title: "Todo Esta Bien",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233673/j6x4oor8lhfd5j8yeoa4.jpg",
@@ -268,10 +288,11 @@ export const songs: Song[] = [
     album: "Kronos Exitos",
     duration: "3:48",
     genre: "Rock Español",
+    audioUrl: "/music/5/21.mp3"
 },
 
 {
-    id: 1,
+    id: 22,
     albumId: 6,
     title: "Abre Los Ojos",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233768/dttyn0ybxhkfcuqviie5.jpg",
@@ -279,9 +300,10 @@ export const songs: Song[] = [
     album: "Le Mua Exitos",
     duration: "3:30",
     genre: " Pop Rock",
+    audioUrl: "/music/6/22.mp3"
 },
 {
-    id: 2,
+    id: 23,
     albumId: 6,
     title: "Otros Labios",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233768/dttyn0ybxhkfcuqviie5.jpg",
@@ -289,9 +311,10 @@ export const songs: Song[] = [
     album: "Le Mua Exitos",
     duration: "3:38",
     genre: " Pop Rock",
+    audioUrl: "/music/6/23.mp3"
 },
 {
-    id: 3,
+    id: 24,
     albumId: 6,
     title: "Senti-Grados",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233768/dttyn0ybxhkfcuqviie5.jpg",
@@ -299,9 +322,10 @@ export const songs: Song[] = [
     album: "Le Mua Exitos",
     duration: "4:45",
     genre: " Pop Rock",
+    audioUrl: "/music/6/24.mp3"
 },
 {
-    id: 1,
+    id: 25,
     albumId: 7,
     title: "Ocean Drive",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233861/o2eqjyznckselkg8br6e.jpg",
@@ -309,65 +333,72 @@ export const songs: Song[] = [
     album: "Duality",
     duration: "3:27",
     genre: " Dance",
+    audioUrl: "/music/7/25.mp3"
 },
 {
-    id: 2,
+    id: 26,
     albumId: 7,
     title: "Lost",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233861/o2eqjyznckselkg8br6e.jpg",
     artists: ["Roger Sanchez FT Luisa Pure"],
     album: "Come With Me",
     duration: "4:49",
-    genre: " Dance"
+    genre: " Dance",
+    audioUrl: "/music/7/26.mp3"
 },
 {
-    id: 3,
+    id: 27,
     albumId: 7,
     title: "Nina",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233861/o2eqjyznckselkg8br6e.jpg",
     artists: ["Tennebreck"],
     album: "Nina Sencillo",
     duration: "4:20",
-    genre: " Dance"
+    genre: " Dance",
+    audioUrl: "/music/7/27.mp3"
 },
 {
-    id: 4,
+    id: 28,
     albumId: 7,
     title: "Poison",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233861/o2eqjyznckselkg8br6e.jpg",
     artists: ["Qodes FT Athena"],
     album: "Poison Sencillo",
     duration: "4:20",
-    genre: " Dance"
+    genre: " Dance",
+    audioUrl: "/music/7/28.mp3"
 },
 {
-    id: 5,
+    id: 29,
     albumId: 7,
     title: "Cinderella",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233861/o2eqjyznckselkg8br6e.jpg",
     artists: ["Bob Sinclar"],
     album: "Paris By Night",
     duration: "3:02",
-    genre: " Dance"
+    genre: " Dance",
+    audioUrl: "/music/7/29.mp3"
 },
 {
-    id: 6,
+    id: 30,
     albumId: 7,
     title: "I´m Good(Blue)",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233861/o2eqjyznckselkg8br6e.jpg",
     artists: ["David Guetta & Bebe Rexha"],
     album: "I´m Good(Blue)",
     duration: "3:11",
-    genre: " Dance"
+    genre: " Dance",
+    audioUrl: "/music/7/30.mp3"
 },
 {
-    id: 7,
+    id: 31,
     albumId: 7,
     title: "World Hold On",
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233861/o2eqjyznckselkg8br6e.jpg",
     artists: ["Bob Sinclar"],
     album: "Radio Edit",
     duration: "3:19",
-    genre: " Dance"
+    genre: " Dance",
+    audioUrl: "/music/7/31.mp3"
 },
 ];

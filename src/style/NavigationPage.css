@@ -45,6 +45,8 @@
 
 
 .content {
+	display: flex;
+	justify-content: space-around;
     border-radius: 0.5rem;
     margin-top: 2rem;
     width: 85%;

@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { AlbumIU,  CardArtist,  SongIU, Title } from "@/components";
 import { RiSearchLine } from "react-icons/ri";
-import { playlists } from "@/seed/seed";
+import { playlists, songs } from "@/seed/seed";
+
 
 
 export default function Home() {
@@ -83,9 +84,15 @@ function DescriptionPage() {
 }
 
 function SongPage() {
+
+  const sortedSongs = [...songs].sort((a, b) => a.title.localeCompare(b.title));
+
   return (
-    <div>
-      <SongIU/>
+    <div className="song-list">
+      {/* Mapear las canciones ordenadas */}
+      {sortedSongs.map((song) => (
+        <SongIU key={`${song.albumId}-${song.id}`} song={song} />
+      ))}
     </div>
   );
 }
@@ -93,14 +100,9 @@ function SongPage() {
 function AlbumPage() {
   return (
     <div className="cards__card">
-      <AlbumIU index={1}/>
-      <AlbumIU index={0}/>
-      <AlbumIU index={1}/>
-      <AlbumIU index={0}/>
-      <AlbumIU index={1}/>
-      <AlbumIU index={0}/>
-      <AlbumIU index={1}/>
-      <AlbumIU index={0}/>
+      {playlists.map((playlist, index) => (
+        <AlbumIU key={playlist.id} playlist={playlist} index={index} />
+      ))}
     </div>
   );
 }
