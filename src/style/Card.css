@@ -338,7 +338,7 @@ card-meta-ti{
 			background-color: var(--c-gray-900);
 			border-radius: 50%;
 			left: calc(50% - 6px);
-			top: -44px;
+			top: -35px;
 		}
 	
 		&:after {
@@ -346,7 +346,7 @@ card-meta-ti{
 			background-color: #fff;
 			border: 1px solid;
 			border-radius: 99em;
-			height: 50px;
+			height: 40px;
 			left: calc(50% - 3px);
 			bottom: 3px;
 		}

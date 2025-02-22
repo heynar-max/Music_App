@@ -1,8 +1,10 @@
-import { SongIU, Title } from "@/components";
+import {  SongIU, Title } from "@/components";
+import { songs } from "@/seed/seed";
 
 
 export default async function favoritePage() {
-    
+
+    const sortedSongs = [...songs].sort((a, b) => a.title.localeCompare(b.title));
     return (
         <div>
             <Title
@@ -12,7 +14,10 @@ export default async function favoritePage() {
                     className="mb-2"
             />
             <div className="page_favorite">
-                <SongIU/>
+                {/* Mapear las canciones ordenadas */}
+      {sortedSongs.map((song) => (
+        <SongIU key={`${song.albumId}-${song.id}`} song={song} />
+      ))}
             </div>
         </div>
     );

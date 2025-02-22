@@ -90,7 +90,7 @@
 		width: 95%;
 	}
 	.cards__card{
-		grid-gap: 1rem;
+		grid-gap: 3rem;
 	}
 }
 @media screen and (max-width:580px){
@@ -116,10 +116,16 @@
         display: flex;
     }
 	.cards__card{
-		grid-gap: 1rem;
+		grid-gap: 3rem;
 	}
 }
 @media screen and (max-width:480px){
+
+	.cards__card{
+		grid-gap: 2rem;
+	}
+}
+@media screen and (max-width:340px){
 
 	.cards__card{
 		grid-gap: 1rem;
