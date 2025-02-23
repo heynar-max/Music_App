@@ -48,6 +48,7 @@ export const playlists: Playlist[] = [
     title: "Le Mua Exitos",
     cover: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233768/dttyn0ybxhkfcuqviie5.jpg",
     artists: ["Le Mua"],
+    genre: "Pop Rock",
 },
 {
     id: '7',
@@ -55,6 +56,7 @@ export const playlists: Playlist[] = [
     title: "REMIX",
     cover: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233861/o2eqjyznckselkg8br6e.jpg",
     artists: ["Duke Dumont", "Roger Sanchez", "Tennebreck", "Qodes", "Bob Sinclar","David Guetta"],
+    genre: "Dance",
 },
 ];
 
@@ -299,7 +301,7 @@ export const songs: Song[] = [
     artists: ["Le Mua"],
     album: "Le Mua Exitos",
     duration: "3:30",
-    genre: " Pop Rock",
+    genre: "Pop Rock",
     audioUrl: "/music/6/22.mp3"
 },
 {
@@ -310,7 +312,7 @@ export const songs: Song[] = [
     artists: ["Le Mua"],
     album: "Le Mua Exitos",
     duration: "3:38",
-    genre: " Pop Rock",
+    genre: "Pop Rock",
     audioUrl: "/music/6/23.mp3"
 },
 {
@@ -321,7 +323,7 @@ export const songs: Song[] = [
     artists: ["Le Mua"],
     album: "Le Mua Exitos",
     duration: "4:45",
-    genre: " Pop Rock",
+    genre: "Pop Rock",
     audioUrl: "/music/6/24.mp3"
 },
 {
@@ -332,7 +334,7 @@ export const songs: Song[] = [
     artists: ["Duke Dumont"],
     album: "Duality",
     duration: "3:27",
-    genre: " Dance",
+    genre: "Dance",
     audioUrl: "/music/7/25.mp3"
 },
 {
@@ -343,7 +345,7 @@ export const songs: Song[] = [
     artists: ["Roger Sanchez FT Luisa Pure"],
     album: "Come With Me",
     duration: "4:49",
-    genre: " Dance",
+    genre: "Dance",
     audioUrl: "/music/7/26.mp3"
 },
 {
@@ -354,7 +356,7 @@ export const songs: Song[] = [
     artists: ["Tennebreck"],
     album: "Nina Sencillo",
     duration: "4:20",
-    genre: " Dance",
+    genre: "Dance",
     audioUrl: "/music/7/27.mp3"
 },
 {
@@ -365,7 +367,7 @@ export const songs: Song[] = [
     artists: ["Qodes FT Athena"],
     album: "Poison Sencillo",
     duration: "4:20",
-    genre: " Dance",
+    genre: "Dance",
     audioUrl: "/music/7/28.mp3"
 },
 {
@@ -376,7 +378,7 @@ export const songs: Song[] = [
     artists: ["Bob Sinclar"],
     album: "Paris By Night",
     duration: "3:02",
-    genre: " Dance",
+    genre: "Dance",
     audioUrl: "/music/7/29.mp3"
 },
 {
@@ -387,7 +389,7 @@ export const songs: Song[] = [
     artists: ["David Guetta & Bebe Rexha"],
     album: "I´m Good(Blue)",
     duration: "3:11",
-    genre: " Dance",
+    genre: "Dance",
     audioUrl: "/music/7/30.mp3"
 },
 {
@@ -398,7 +400,7 @@ export const songs: Song[] = [
     artists: ["Bob Sinclar"],
     album: "Radio Edit",
     duration: "3:19",
-    genre: " Dance",
+    genre: "Dance",
     audioUrl: "/music/7/31.mp3"
 },
 ];

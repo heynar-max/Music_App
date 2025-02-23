@@ -11,3 +11,6 @@ export * from './ui/not-found/PageNotFound'
 export * from './ui/title/Title'
 
 export * from './ui/siderber/Siderbar'
+
+export * from './generos/Genero'
+export * from './generos/Generos'

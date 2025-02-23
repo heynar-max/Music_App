@@ -15,9 +15,16 @@ export const TopMenu = () => {
     const pathname = usePathname();
 
         // Función para verificar si la ruta está activa
-        // Aseguramos que 'path' sea un string
-        const isActive = (path: string): boolean => pathname === path;
+        const isActive = (path: string): boolean => {
+            if (path === "/") {
+            return pathname === path; // Solo activa si la ruta es exactamente "/"
+            }
+            return pathname.startsWith(path); // Para otras rutas, usa startsWith
+        };
 
+
+
+        
 
         const [isSmallScreen, setIsSmallScreen] = useState(false);
 
@@ -77,7 +84,7 @@ export const TopMenu = () => {
             <div className="center_menu">
                 <Link className={`nav-item ${isActive('/') ? 'active' : ''}`} href='/'>Home</Link>
 
-                <Link className={`nav-item ${isActive('/category') ? 'active' : ''}`} href='/category'>Genero</Link>
+                <Link className={`nav-item ${isActive('/genero') ? 'active' : ''}`} href='/genero'>Genero</Link>
 
                 <Link className={`nav-item ${isActive('/favorite') ? 'active' : ''}`} href='/favorite'>Favoritos</Link>
                 
@@ -110,7 +117,7 @@ export const TopMenu = () => {
                     </Link>
 
                     <Link 
-                        className={`nav-item ${isActive('/category') ? 'active' : ''}`} href='/category'>
+                        className={`nav-item ${isActive('/genero') ? 'active' : ''}`} href='/genero'>
                         
                         <IoGridOutline />
                     </Link>
