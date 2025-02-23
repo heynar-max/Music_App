@@ -1,0 +1,109 @@
+.image_ganero{
+    border-radius: 13px;
+    height: 300px;
+    width: 300px;
+    margin-top: .5rem;
+}
+
+.genero{
+    display: flex;
+    height: 320px;
+    width: 320px;
+    justify-content: center;
+    border-radius: 30%;
+    transition: all 0.2s ease; 
+    border-radius: 20px;
+	border: 3px solid #0f0f0f;
+	box-shadow: 0 8px 10px -4px rgba(#000, 0.2);
+	transform-origin: center center;
+	transition: 0.15s ease;
+	cursor: pointer;
+    &:hover,
+	&:focus {
+		transform: translatey(-4px);
+		box-shadow: 0 12px 14px -4px rgba(#000, 0.3);
+	}
+}
+
+.page_genero{
+	display: grid;
+    grid-template-columns: repeat(4, 1fr);
+	grid-gap: 2rem;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+	margin-top: 2rem;
+    justify-items: center;
+}
+
+@media screen and (max-width:1600px){
+
+	.page_genero{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media screen and (max-width:1200px){
+
+	.page_genero{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width:900px){
+    .image_ganero{
+        height: 250px;
+        width: 250px;
+    }
+
+	.genero{
+        height: 270px;
+        width: 280px;
+    }
+}
+@media screen and (max-width:730px){
+    .image_ganero{
+        height: 200px;
+        width: 200px;
+    }
+	.genero{
+        height: 220px;
+        width: 220px;
+    }
+}
+@media screen and (max-width:580px){
+    .image_ganero{
+        height: 150px;
+        width: 150px;
+    }
+	.genero{
+        height: 170px;
+        width: 170px;
+    }
+}
+@media screen and (max-width:470px){
+    .image_ganero{
+        height: 140px;
+        width: 140px;
+    }
+	.genero{
+        height: 160px;
+        width: 160px;
+    }
+    .page_genero{
+        grid-gap: .5rem;
+    }
+}
+@media screen and (max-width:400px){
+    .image_ganero{
+        height: 150px;
+        width: 150px;
+    }
+	.genero{
+        height: 170px;
+        width: 170px;
+    }
+    .page_genero{
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 2rem;
+    }
+}

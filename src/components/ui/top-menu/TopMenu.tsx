@@ -77,7 +77,7 @@ export const TopMenu = () => {
             <div className="center_menu">
                 <Link className={`nav-item ${isActive('/') ? 'active' : ''}`} href='/'>Home</Link>
 
-                <Link className={`nav-item ${isActive('/category/favorito') ? 'active' : ''}`} href='/category/abc'>Genero</Link>
+                <Link className={`nav-item ${isActive('/category') ? 'active' : ''}`} href='/category'>Genero</Link>
 
                 <Link className={`nav-item ${isActive('/favorite') ? 'active' : ''}`} href='/favorite'>Favoritos</Link>
                 
@@ -110,7 +110,7 @@ export const TopMenu = () => {
                     </Link>
 
                     <Link 
-                        className={`nav-item ${isActive('/category/favorito') ? 'active' : ''}`} href='/category/abc'>
+                        className={`nav-item ${isActive('/category') ? 'active' : ''}`} href='/category'>
                         
                         <IoGridOutline />
                     </Link>

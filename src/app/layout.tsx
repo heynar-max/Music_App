@@ -7,6 +7,7 @@ import "../style/Title.css";
 import "../style/Search.css";
 import "../style/NavigationPage.css";
 import "../style/Card.css";
+import "../style/genero.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
