@@ -58,6 +58,22 @@ export const playlists: Playlist[] = [
     artists: ["Duke Dumont", "Roger Sanchez", "Tennebreck", "Qodes", "Bob Sinclar","David Guetta"],
     genre: "Dance",
 },
+{
+    id: '8',
+    albumId: 8,
+    title: "EL ESPíRITU DEL VINO",
+    cover: "https://res.cloudinary.com/dzty81hol/image/upload/v1741546650/njozbdcas59yj9yhmwd0.jpg",
+    artists: ["Heroes del Silencio"],
+    genre: "Rock Español",
+},
+{
+    id: '9',
+    albumId: 9,
+    title: "SENDEROS DE TRADICIóN",
+    cover: "https://res.cloudinary.com/dzty81hol/image/upload/v1741546650/hcsih5bg8zsimvhrwreb.jpg",
+    artists: ["Heroes del Silencio"],
+    genre: "Rock Español",
+},
 ];
 
 export const songs: Song[] = [
@@ -402,5 +418,71 @@ export const songs: Song[] = [
     duration: "3:19",
     genre: "Dance",
     audioUrl: "/music/7/31.mp3"
+},
+{
+    id: 32,
+    albumId: 8,
+    title: "La Apariencia no es Sincera",
+    image: "https://res.cloudinary.com/dzty81hol/image/upload/v1741546650/njozbdcas59yj9yhmwd0.jpg",
+    artists: ["Heroes del Silencio"],
+    album: "Espiritu del Vino",
+    duration: "7:03",
+    genre: "Rock Español",
+    audioUrl: "/music/8/32.mp3"
+},
+{
+    id: 33,
+    albumId: 8,
+    title: "La Sirena Varada",
+    image: "https://res.cloudinary.com/dzty81hol/image/upload/v1741546650/njozbdcas59yj9yhmwd0.jpg",
+    artists: ["Heroes del Silencio"],
+    album: "Espiritu del Vino",
+    duration: "4:15",
+    genre: "Rock Español",
+    audioUrl: "/music/8/33.mp3"
+},
+{
+    id: 34,
+    albumId: 8,
+    title: "Nuestros Nombres",
+    image: "https://res.cloudinary.com/dzty81hol/image/upload/v1741546650/njozbdcas59yj9yhmwd0.jpg",
+    artists: ["Heroes del Silencio"],
+    album: "Espiritu del Vino",
+    duration: "5:57",
+    genre: "Rock Español",
+    audioUrl: "/music/8/34.mp3"
+},
+{
+    id: 35,
+    albumId: 9,
+    title: "Malas Intenciones",
+    image: "https://res.cloudinary.com/dzty81hol/image/upload/v1741546650/hcsih5bg8zsimvhrwreb.jpg",
+    artists: ["Heroes del Silencio"],
+    album: "Senderos de Traición",
+    duration: "3:47",
+    genre: "Rock Español",
+    audioUrl: "/music/9/35.mp3"
+},
+{
+    id: 36,
+    albumId: 9,
+    title: "Maldito Duende",
+    image: "https://res.cloudinary.com/dzty81hol/image/upload/v1741546650/hcsih5bg8zsimvhrwreb.jpg",
+    artists: ["Heroes del Silencio"],
+    album: "Senderos de Traición",
+    duration: "4:15",
+    genre: "Rock Español",
+    audioUrl: "/music/9/36.mp3"
+},
+{
+    id: 37,
+    albumId: 9,
+    title: "Oración",
+    image: "https://res.cloudinary.com/dzty81hol/image/upload/v1741546650/hcsih5bg8zsimvhrwreb.jpg",
+    artists: ["Heroes del Silencio"],
+    album: "Senderos de Traición",
+    duration: "4:06",
+    genre: "Rock Español",
+    audioUrl: "/music/9/37.mp3"
 },
 ];

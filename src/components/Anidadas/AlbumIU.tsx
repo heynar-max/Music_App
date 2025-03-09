@@ -1,101 +1,66 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { songs as allSongs } from "@/seed/seed"; // Importar todas las canciones
-import { Song } from "@/seed/types";
-import { RiPlayCircleFill } from "react-icons/ri";
+import { useState } from "react";
+
+import { Playlist } from "@/seed/types";
+import { RiPauseCircleFill, RiPlayCircleFill } from "react-icons/ri";
 
 const MAX_ARTISTS_LENGTH = 20; // Longitud máxima antes de truncar
 
-interface Playlist {
-    id: string;
-    cover: string;
-    title: string;
-    artists: string[];
-    albumId: number;
-}
 
 interface AlbumIUProps {
-    playlist: Playlist ; // Aceptar playlist como null
+    playlist: Playlist;
     index: number;
+    onClick: () => void;
 }
 
-export const AlbumIU: React.FC<AlbumIUProps> = ({ playlist, index }) => {
-  // Llamar a los Hooks siempre en el mismo orden
-  const [songs, setSongs] = useState<Song[]>([]); // Especificar el tipo Song[]
-
-
-    const { id, cover, title, artists, albumId } = playlist;
-
-useEffect(() => {
-      // Filtrar las canciones por albumId
-    const filteredSongs = allSongs.filter((song) => song.albumId === albumId);
-    setSongs(filteredSongs);
-}, [albumId]);
-    
-    const isEvenIndex = index % 2 === 0;
-    const playListSongs = songs.filter((song) => song.albumId === albumId);
-
-  // Función para truncar el texto si es demasiado largo
+    // Función para truncar texto
     const truncateText = (text: string, maxLength: number): string => {
-    return text.length > maxLength ? `${text.substring(0, maxLength)}...` : text;
-};
+        return text.length > maxLength ? `${text.substring(0, maxLength)}...` : text;
+    };
+export const AlbumIU: React.FC<AlbumIUProps> = ({ playlist, onClick, index }) => {
 
-    const artistsString = truncateText(artists.join(", "), MAX_ARTISTS_LENGTH);
+    const [isPlaying, setIsPlaying] = useState(false);
 
+    const togglePlayPause = () => {
+        setIsPlaying(!isPlaying);
+        console.log(isPlaying ? `Pausar ${playlist.title}` : `Reproducir ${playlist.title}`);
+    };
+
+    // Truncar nombres de artistas si es necesario
+    const artistsString = truncateText(playlist.artists.join(", "), MAX_ARTISTS_LENGTH);
+    
     return (
-    <article
-        className="card"
-        style={
-            {
-            "--rotation": `${index % 2 === 0 ? "5deg" : "-5deg"}`,
-            } as React.CSSProperties
-        }
-        >
-        <div className={`card-inner ${isEvenIndex ? "even" : "odd"}`}>
+        <article className="card"
+            onClick={onClick} style={
+                {
+                "--rotation": `${index % 2 === 0 ? "5deg" : "-5deg"}`,
+                } as React.CSSProperties}>
+            <div className={`card-inner ${index % 2 === 0 ? "even" : "odd"}`}>
             <span
-            className="card-pin"
-            style={{
-                top: "20px",
-                left: index % 2 === 0 ? "20px" : "calc(50% - 6px)",
-                transform: index % 2 === 0 ? "rotate(-5deg)" : "rotate(0)",
-            }}
-            ></span>
-
-            <div className="card-image">
-            <Link href={`/${id}`} className="card_link">
-                <Image
-                src={cover}
-                alt={artists.join(", ")}
-                width={200}
-                height={200}
-                priority
-                />
-            </Link>
-            </div>
-
-            <div className="card-content">
-            <div className="card-meta">
-                <span className="card-meta-number">
-                {playListSongs.length} canciones
-                </span>
-                <div className="card-meta-button">
-                <PlayButton id={id} />
+                className="card-pin"
+                style={{
+                    top: "20px",
+                    left: index % 2 === 0 ? "20px" : "calc(50% - 6px)",
+                    transform: index % 2 === 0 ? "rotate(-5deg)" : "rotate(0)",
+                }}
+                ></span>
+                <div className="card-image">
+                    <Image src={playlist.cover} alt={playlist.title} width={200} height={200} priority />
+                </div>
+                
+                    <h2 className="card-title">{playlist.title}</h2>
+                <div className="card-content">
+                    <div className="card-meta">
+                        <button className="card-meta-button" onClick={(e) => { e.stopPropagation(); togglePlayPause(); }}>
+                        {isPlaying ? <RiPauseCircleFill className="player_icon" /> : <RiPlayCircleFill className="player_icon" />}
+                        </button>
+                    </div>
+                    <span className="card-meta-artist">{artistsString}</span>
                 </div>
             </div>
-            <h2 className="card-title">{artistsString}</h2>
-            <div className="card-meta-ti">
-                <h2 className="card-meta-title">{title}</h2>
-            </div>
-            </div>
-        </div>
         </article>
     );
 };
-
-// Componente de botón de reproducción (simulado)
-const PlayButton = ({ id }: { id: string }) => {
-    return <button onClick={() => console.log(`Reproducir ${id}`)}><RiPlayCircleFill className="iplay" /></button>;
-};
+;

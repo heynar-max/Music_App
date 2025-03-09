@@ -1,15 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { AlbumIU,  CardArtist,  SongIU, Title } from "@/components";
+import {  AlbumIU, CardArtist,  SongIU, Title } from "@/components";
 import { RiSearchLine } from "react-icons/ri";
 import { playlists, songs } from "@/seed/seed";
+import AlbumDetail from "@/components/Anidadas/AlbumDetail";
 
 
 
 export default function Home() {
   // Estado para manejar la página activa
   const [activePage, setActivePage] = useState("description");
+  const [selectedAlbumId, setSelectedAlbumId] = useState<string | null>(null);
 
   return (
     <>
@@ -66,7 +68,13 @@ export default function Home() {
       <div className="content">
         {activePage === "description" && <DescriptionPage />}
         {activePage === "song" && <SongPage />}
-        {activePage === "album" && <AlbumPage />}
+        {activePage === "album" && (
+          selectedAlbumId ? (
+            <AlbumDetail albumId={selectedAlbumId} onClose={() => setSelectedAlbumId(null)} />
+          ) : (
+            <AlbumPage onAlbumClick={setSelectedAlbumId} />
+          )
+        )}
         {activePage === "artist" && <ArtistPage />}
       </div>
     </>
@@ -97,11 +105,11 @@ function SongPage() {
   );
 }
 
-function AlbumPage() {
+function AlbumPage({ onAlbumClick }: { onAlbumClick: (id: string) => void }) {
   return (
     <div className="cards__card">
       {playlists.map((playlist, index) => (
-        <AlbumIU key={playlist.id} playlist={playlist} index={index} />
+        <AlbumIU key={playlist.id} playlist={playlist} index={index} onClick={() => onAlbumClick(playlist.id)} />
       ))}
     </div>
   );
