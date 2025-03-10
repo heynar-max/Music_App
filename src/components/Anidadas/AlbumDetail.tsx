@@ -4,24 +4,13 @@ import { playlists, songs as allSongs } from "@/seed/seed";
 import { SongIU } from "@/components";
 import Image from "next/image";
 import { useEffect, useMemo } from "react";
+import { durationToSeconds, secondsToHoursMinutes } from "@/helpers/timeUtils";
 
 interface AlbumDetailProps {
     albumId: string;
     onClose: () => void;
 }
 
-    // Función para convertir duración "minutos:segundos" a segundos
-    const durationToSeconds = (duration: string) => {
-        const [minutes, seconds] = duration.split(":").map(Number);
-        return minutes * 60 + seconds;
-    };
-
-    // Función para convertir segundos a formato "horas:minutos"
-    const secondsToHoursMinutes = (seconds: number) => {
-        const hours = Math.floor(seconds / 3600);
-        const minutes = Math.floor((seconds % 3600) / 60);
-        return hours > 0 ? `${hours} h ${minutes} min` : `${minutes} min`;
-    };
 
 export default function AlbumDetail({ albumId, onClose }: AlbumDetailProps) {
 

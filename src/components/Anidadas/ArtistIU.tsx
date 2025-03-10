@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 import { RiPlayCircleFill } from 'react-icons/ri';
 ;
@@ -14,12 +13,13 @@ interface Playlist {
 interface CardArtistProps {
     playlist: Playlist;
     index: number;
+    onArtistClick?: (artist: string) => void;
 }
 
 const MAX_ARTISTS_LENGTH = 20; // Longitud máxima antes de truncar
 
-export const CardArtist: React.FC<CardArtistProps> = ({ playlist, index }) => {
-    const { id, cover, artists } = playlist;
+export const CardArtist: React.FC<CardArtistProps> = ({ playlist, index, onArtistClick  }) => {
+    const {  cover, artists } = playlist;
 
     // Determinar si el índice es par o impar
     const isEvenIndex = index % 2 === 0;
@@ -34,7 +34,7 @@ export const CardArtist: React.FC<CardArtistProps> = ({ playlist, index }) => {
     const artistsString = truncateText(artists.join(', '), MAX_ARTISTS_LENGTH);
 
     return (
-        <Link href={`/${id}`} className="card_link">
+        <button onClick={() => onArtistClick?.(artists[0])} className="card_link">
         <article
             className="card"
             style={{
@@ -72,6 +72,6 @@ export const CardArtist: React.FC<CardArtistProps> = ({ playlist, index }) => {
             </div>
             </div>
         </article>
-        </Link>
+        </button>
     );
 };

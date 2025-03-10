@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import {  AlbumIU, CardArtist,  SongIU, Title } from "@/components";
+import {  AlbumIU, ArtistDetail, CardArtist,  SongIU, Title } from "@/components";
 import { RiSearchLine } from "react-icons/ri";
 import { playlists, songs } from "@/seed/seed";
 import AlbumDetail from "@/components/Anidadas/AlbumDetail";
+
 
 
 
@@ -12,6 +13,7 @@ export default function Home() {
   // Estado para manejar la página activa
   const [activePage, setActivePage] = useState("description");
   const [selectedAlbumId, setSelectedAlbumId] = useState<string | null>(null);
+  const [selectedArtist, setSelectedArtist] = useState<string | null>(null);
 
   return (
     <>
@@ -75,7 +77,13 @@ export default function Home() {
             <AlbumPage onAlbumClick={setSelectedAlbumId} />
           )
         )}
-        {activePage === "artist" && <ArtistPage />}
+        {activePage === "artist" && (
+          selectedArtist ? (
+            <ArtistDetail artist={selectedArtist} onBack={() => setSelectedArtist(null)} />
+          ) : (
+            <ArtistPage onArtistClick={setSelectedArtist} />
+          )
+        )}
       </div>
     </>
   );
@@ -115,11 +123,13 @@ function AlbumPage({ onAlbumClick }: { onAlbumClick: (id: string) => void }) {
   );
 }
 
-function ArtistPage() {
+function ArtistPage({ onArtistClick }: { onArtistClick: (artist: string) => void }) {
   return (
     <div className="cards__card">
-      {playlists.map((playlist, index) => (
-        <CardArtist key={playlist.id} playlist={playlist} index={index} />
+      {Array.from(new Set(playlists.flatMap((playlist) => playlist.artists))).map((artist, index) => (
+        <div key={artist} onClick={() => onArtistClick(artist)}>
+          <CardArtist playlist={playlists.find((p) => p.artists.includes(artist))!} index={index} />
+        </div>
       ))}
     </div>
   );

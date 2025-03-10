@@ -5,6 +5,8 @@ export * from './ui/top-menu/TopMenu'
 export * from './Anidadas/SongIU'
 export * from './Anidadas/AlbumIU'
 export * from './Anidadas/ArtistIU'
+export * from './Anidadas/AlbumDetail'
+export * from './Anidadas/ArtistDetail'
 
 export * from './ui/not-found/PageNotFound'
 
