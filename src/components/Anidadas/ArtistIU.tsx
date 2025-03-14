@@ -64,9 +64,9 @@ export const CardArtist: React.FC<CardArtistProps> = ({ playlist, index, onArtis
             <div className="card-content">
                 <div className="card-meta">
                 
-                <button className="card-meta-button">
+                <div className="card-meta-button">
                     <RiPlayCircleFill className="iplay" />
-                </button>
+                </div>
                 </div>
                 <h2 className="card-title">{artistsString}</h2>
             </div>

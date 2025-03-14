@@ -34,6 +34,9 @@ export default function Home() {
             type="text"
             className="search-input"
             placeholder="Buscar Canción"
+            id="search"
+            name="search-input-1"
+            autoComplete="off"
           />
         </div>
       </section>

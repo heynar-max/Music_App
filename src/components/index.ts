@@ -16,3 +16,5 @@ export * from './ui/siderber/Siderbar'
 
 export * from './generos/Genero'
 export * from './generos/Generos'
+
+export * from './ui/footer/Footer'

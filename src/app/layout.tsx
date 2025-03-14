@@ -9,6 +9,7 @@ import "../style/NavigationPage.css";
 import "../style/Card.css";
 import "../style/genero.css";
 import "../style/PageMusicId.css";
+import "../style/Login.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

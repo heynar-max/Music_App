@@ -55,8 +55,11 @@ export const Sidebar = () => {
                 <div className="relative mt-14">
                     <IoSearchOutline size={ 20 } className="absolute top-2 left-2" />
                         <input
+                            id="search-input-2"
+                            name="search"
                             type="text"
-                            placeholder="Buscar"
+                            placeholder="Buscar Canción"
+                            autoComplete="off"
                             className="w-full bg-gray-50 rounded pl-10 py-1 pr-10 border-b-2 text-xl border-gray-200 focus:outline-none focus:border-green-600"
                         />
                 </div>

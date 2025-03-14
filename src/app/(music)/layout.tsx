@@ -1,4 +1,4 @@
-import { Sidebar, TopMenu } from "@/components";
+import {  Sidebar, TopMenu } from "@/components";
 
 export default function MusicLayout({children}: { children: React.ReactNode}) {
     return (
@@ -8,6 +8,7 @@ export default function MusicLayout({children}: { children: React.ReactNode}) {
             <div className="px-0 sm:px-5 flex flex-col justify-center max-[1024px]:px-2 max-[800px]:mb-20">
                 {children}                
             </div>
+            {/* <Footer/> */}
         </div>
     );
 }

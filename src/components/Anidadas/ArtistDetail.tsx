@@ -48,7 +48,7 @@ export  const ArtistDetail: React.FC<ArtistDetailProps> = ({ artist, onBack }) =
         />
       )}
       <div className="pageMusic_rigth">
-      <h1 className="pageMusic_h1">Canciones de {artist}</h1>
+      <h1 className="pageMusic_h1">Canciones de <span className="pageMusic-span">{artist}</span></h1>
             <p className="pageMusic_span">Duración total: {totalDuration}</p>
             
       </div>
