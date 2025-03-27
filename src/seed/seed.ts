@@ -8,7 +8,7 @@ export const playlists: Playlist[] = [
     title: "Más alla de la realidad",
     cover: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233374/xqlham3gwdkzkfdais10.jpg",
     artists: ["Akash"],
-    genre: "Rock Español",
+    genre: "RockEspanol",
 },
 {
     id: '2',
@@ -24,7 +24,7 @@ export const playlists: Playlist[] = [
     title: "Avalancha",
     cover: "https://res.cloudinary.com/dzty81hol/image/upload/v1697931368/lalfctbpxmrfvuappaxq.jpg",
     artists: ["Heroes del Silencio"],
-    genre: "Rock Español",
+    genre: "RockEspanol",
 },
 {
     id: '4',
@@ -32,7 +32,7 @@ export const playlists: Playlist[] = [
     title: "Adentro",
     cover: "https://res.cloudinary.com/dzty81hol/image/upload/v1740187720/pc8scxqhmqo2qm0ku7rd.jpg",
     artists: ["Los de Adentro"],
-    genre: "Rock Español",
+    genre: "RockEspanol",
 },
 {
     id: '5',
@@ -40,7 +40,7 @@ export const playlists: Playlist[] = [
     title: "Kronos Exitos",
     cover: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233673/j6x4oor8lhfd5j8yeoa4.jpg",
     artists: ["Kronos"],
-    genre: "Rock Español",
+    genre: "RockEspanol",
 },
 {
     id: '6',
@@ -48,7 +48,7 @@ export const playlists: Playlist[] = [
     title: "Le Mua Exitos",
     cover: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233768/dttyn0ybxhkfcuqviie5.jpg",
     artists: ["Le Mua"],
-    genre: "Pop Rock",
+    genre: "PopRock",
 },
 {
     id: '7',
@@ -64,7 +64,7 @@ export const playlists: Playlist[] = [
     title: "EL ESPíRITU DEL VINO",
     cover: "https://res.cloudinary.com/dzty81hol/image/upload/v1741546650/njozbdcas59yj9yhmwd0.jpg",
     artists: ["Heroes del Silencio"],
-    genre: "Rock Español",
+    genre: "RockEspanol",
 },
 {
     id: '9',
@@ -72,7 +72,7 @@ export const playlists: Playlist[] = [
     title: "SENDEROS DE TRADICIóN",
     cover: "https://res.cloudinary.com/dzty81hol/image/upload/v1741546650/hcsih5bg8zsimvhrwreb.jpg",
     artists: ["Heroes del Silencio"],
-    genre: "Rock Español",
+    genre: "RockEspanol",
 },
 ];
 
@@ -85,7 +85,7 @@ export const songs: Song[] = [
     artists: ["Akash"],
     album: "Mas Alla De La Realidad",
     duration: "4:00",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/1/1.mp3"
 },
 {
@@ -96,7 +96,7 @@ export const songs: Song[] = [
     artists: ["Akash"],
     album: "Mas Alla De La Realidad",
     duration: "3:51",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/1/2.mp3"
 },
 {
@@ -107,7 +107,7 @@ export const songs: Song[] = [
     artists: ["Akash"],
     album: "Mas Alla De La Realidad",
     duration: "6:46",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/1/3.mp3"
 },
 {
@@ -173,7 +173,7 @@ export const songs: Song[] = [
     artists: ["Heroes del Silencio"],
     album: "Avalancha",
     duration: "4:47",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/3/9.mp3"
 },
 {
@@ -184,7 +184,7 @@ export const songs: Song[] = [
     artists: ["Heroes del Silencio"],
     album: "Avalancha",
     duration: "4:45",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/3/10.mp3"
 },
 {
@@ -195,7 +195,7 @@ export const songs: Song[] = [
     artists: ["Heroes del Silencio"],
     album: "Avalancha",
     duration: "5:17",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/3/11.mp3"
 },
 {
@@ -206,7 +206,7 @@ export const songs: Song[] = [
     artists: ["Heroes del Silencio"],
     album: "Avalancha",
     duration: "5:27",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/3/12.mp3"
 },
 {
@@ -217,7 +217,7 @@ export const songs: Song[] = [
     artists: ["Heroes del Silencio"],
     album: "Avalancha",
     duration: "6:18",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/3/13.mp3"
 },
 {
@@ -228,7 +228,7 @@ export const songs: Song[] = [
     artists: ["Los de Adentro"],
     album: "Adentro",
     duration: "3:00",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/4/14.mp3"
 },
 {
@@ -239,7 +239,7 @@ export const songs: Song[] = [
     artists: ["Los de Adentro"],
     album: "Adentro",
     duration: "4:41",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/4/15.mp3"
 },
 {
@@ -250,7 +250,7 @@ export const songs: Song[] = [
     artists: ["Los de Adentro"],
     album: "Adentro",
     duration: "3:14",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/4/16.mp3"
 },
 {
@@ -261,7 +261,7 @@ export const songs: Song[] = [
     artists: ["Los de Adentro"],
     album: "Adentro",
     duration: "4:18",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/4/17.mp3"
 },
 {
@@ -272,7 +272,7 @@ export const songs: Song[] = [
     artists: ["Los de Adentro"],
     album: "Adentro",
     duration: "3:45",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/4/18.mp3"
 },
 {
@@ -283,7 +283,7 @@ export const songs: Song[] = [
     artists: ["Kronos"],
     album: "Kronos Exitos",
     duration: "5:20",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/5/19.mp3"
 },
 {
@@ -294,7 +294,7 @@ export const songs: Song[] = [
     artists: ["Kronos"],
     album: "Kronos Exitos",
     duration: "4:06",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/5/20.mp3"
 },
 {
@@ -305,7 +305,7 @@ export const songs: Song[] = [
     artists: ["Kronos"],
     album: "Kronos Exitos",
     duration: "3:48",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/5/21.mp3"
 },
 
@@ -317,7 +317,7 @@ export const songs: Song[] = [
     artists: ["Le Mua"],
     album: "Le Mua Exitos",
     duration: "3:30",
-    genre: "Pop Rock",
+    genre: "PopRock",
     audioUrl: "/music/6/22.mp3"
 },
 {
@@ -328,7 +328,7 @@ export const songs: Song[] = [
     artists: ["Le Mua"],
     album: "Le Mua Exitos",
     duration: "3:38",
-    genre: "Pop Rock",
+    genre: "PopRock",
     audioUrl: "/music/6/23.mp3"
 },
 {
@@ -339,7 +339,7 @@ export const songs: Song[] = [
     artists: ["Le Mua"],
     album: "Le Mua Exitos",
     duration: "4:45",
-    genre: "Pop Rock",
+    genre: "PopRock",
     audioUrl: "/music/6/24.mp3"
 },
 {
@@ -427,7 +427,7 @@ export const songs: Song[] = [
     artists: ["Heroes del Silencio"],
     album: "Espiritu del Vino",
     duration: "7:03",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/8/32.mp3"
 },
 {
@@ -438,7 +438,7 @@ export const songs: Song[] = [
     artists: ["Heroes del Silencio"],
     album: "Espiritu del Vino",
     duration: "4:15",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/8/33.mp3"
 },
 {
@@ -449,7 +449,7 @@ export const songs: Song[] = [
     artists: ["Heroes del Silencio"],
     album: "Espiritu del Vino",
     duration: "5:57",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/8/34.mp3"
 },
 {
@@ -460,7 +460,7 @@ export const songs: Song[] = [
     artists: ["Heroes del Silencio"],
     album: "Senderos de Traición",
     duration: "3:47",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/9/35.mp3"
 },
 {
@@ -471,7 +471,7 @@ export const songs: Song[] = [
     artists: ["Heroes del Silencio"],
     album: "Senderos de Traición",
     duration: "4:15",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/9/36.mp3"
 },
 {
@@ -482,7 +482,7 @@ export const songs: Song[] = [
     artists: ["Heroes del Silencio"],
     album: "Senderos de Traición",
     duration: "4:06",
-    genre: "Rock Español",
+    genre: "RockEspanol",
     audioUrl: "/music/9/37.mp3"
 },
 ];
