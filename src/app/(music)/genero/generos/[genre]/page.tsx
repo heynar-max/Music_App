@@ -1,4 +1,4 @@
-export const revalidate = 60 //60 segundos
+export const revalidate = 60;
 
 import { notFound } from "next/navigation";
 import { Generos, SongIU, Title } from "@/components";

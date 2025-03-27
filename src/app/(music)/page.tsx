@@ -1,6 +1,6 @@
 "use client";
 
-export const revalidate = 60 //60 segundos
+
 
 import { useState } from "react";
 import {  AlbumIU, ArtistDetail, CardArtist,  SongIU, Title } from "@/components";
