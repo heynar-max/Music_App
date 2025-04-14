@@ -1,0 +1,43 @@
+.player_container{
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    width:100% ;
+    z-index: 1;
+}
+.player_content{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    justify-content: space-between;
+    padding: .1rem;
+    background-color: var(--c-blue-500);
+    color: #080808;
+}
+.player_player{
+    cursor: pointer;
+}
+.player_boton{
+    width: 35px;
+    background-color: var(--c-blue-500);
+    border: none;
+    cursor: pointer;
+}
+.player_icon{
+    font-size: 2.5rem;
+}
+
+@media screen and (max-width:800px){
+    .player_content{
+        margin-bottom: 6rem;
+        background-color: var(--c-blue-300);
+        color: #111;
+        width: 91%;
+        border-radius: 15px;
+        border: 2px solid var(--c-gray-900);
+    }
+    .player_boton{
+        background-color: var(--c-blue-300);
+    }
+}

@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 
 import { IoGridOutline, IoSearchOutline } from "react-icons/io5"
 import { RiHeart3Line, RiHomeLine, RiUser3Line } from "react-icons/ri";
+import { Player } from "../player/AudioPlayer";
 
 
 export const TopMenu = () => {
@@ -108,6 +109,9 @@ export const TopMenu = () => {
             </div>
         </nav>
 
+        <nav>
+            <Player/>
+        </nav>
         <nav>
             <footer className="menu">
                 <div className="menu-inner">
