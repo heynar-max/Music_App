@@ -1,10 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 
 import { Playlist } from "@/seed/types";
-import { RiPauseCircleFill, RiPlayCircleFill } from "react-icons/ri";
+import { PlayButton } from "../ui/player/PlayBoton";
 
 const MAX_ARTISTS_LENGTH = 20; // Longitud máxima antes de truncar
 
@@ -21,15 +20,12 @@ interface AlbumIUProps {
     };
 export const AlbumIU: React.FC<AlbumIUProps> = ({ playlist, onClick, index }) => {
 
-    const [isPlaying, setIsPlaying] = useState(false);
-
-    const togglePlayPause = () => {
-        setIsPlaying(!isPlaying);
-        console.log(isPlaying ? `Pausar ${playlist.title}` : `Reproducir ${playlist.title}`);
-    };
-
     // Truncar nombres de artistas si es necesario
     const artistsString = truncateText(playlist.artists.join(", "), MAX_ARTISTS_LENGTH);
+
+    const handlePlayButtonClick = (e: React.MouseEvent) => {
+        e.stopPropagation(); // Detener la propagación del clic
+    };
     
     return (
         <article className="card"
@@ -53,9 +49,10 @@ export const AlbumIU: React.FC<AlbumIUProps> = ({ playlist, onClick, index }) =>
                     <h2 className="card-title">{playlist.title}</h2>
                 <div className="card-content">
                     <div className="card-meta">
-                        <button className="card-meta-button" onClick={(e) => { e.stopPropagation(); togglePlayPause(); }}>
-                        {isPlaying ? <RiPauseCircleFill className="player_icon" /> : <RiPlayCircleFill className="player_icon" />}
-                        </button>
+                        <div className="card-meta-button">
+                            {/* Detener propagación del clic aquí */}
+                            <PlayButton id={playlist.id} onClick={handlePlayButtonClick} />
+                        </div>
                     </div>
                     <span className="card-meta-artist">{artistsString}</span>
                 </div>
@@ -63,4 +60,3 @@ export const AlbumIU: React.FC<AlbumIUProps> = ({ playlist, onClick, index }) =>
         </article>
     );
 };
-;

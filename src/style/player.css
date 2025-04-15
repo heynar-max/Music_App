@@ -30,7 +30,7 @@
 
 @media screen and (max-width:800px){
     .player_content{
-        margin-bottom: 6rem;
+        margin-bottom: 5.6rem;
         background-color: var(--c-blue-300);
         color: #111;
         width: 91%;

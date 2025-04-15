@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
-import { RiPlayCircleFill } from 'react-icons/ri';
-;
+import { PlayButton } from '../ui/player/PlayBoton';
+
 
 interface Playlist {
     id: string;
@@ -16,62 +16,64 @@ interface CardArtistProps {
     onArtistClick?: (artist: string) => void;
 }
 
-const MAX_ARTISTS_LENGTH = 20; // Longitud máxima antes de truncar
+const MAX_ARTISTS_LENGTH = 20;
 
-export const CardArtist: React.FC<CardArtistProps> = ({ playlist, index, onArtistClick  }) => {
-    const {  cover, artists } = playlist;
-
-    // Determinar si el índice es par o impar
+export const CardArtist: React.FC<CardArtistProps> = ({ playlist, index, onArtistClick }) => {
+    const { cover, artists } = playlist;
     const isEvenIndex = index % 2 === 0;
 
-
-    // Función para truncar el texto si es demasiado largo
     const truncateText = (text: string, maxLength: number): string => {
         return text.length > maxLength ? `${text.substring(0, maxLength)}...` : text;
     };
 
-    // Formatear la lista de artistas
     const artistsString = truncateText(artists.join(', '), MAX_ARTISTS_LENGTH);
 
+    const handlePlayButtonClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
+    };
+
+    const handleCardClick = () => {
+        onArtistClick?.(artists[0]);
+    };
+
     return (
-        <button onClick={() => onArtistClick?.(artists[0])} className="card_link">
         <article
             className="card"
+            onClick={handleCardClick}
             style={{
                 '--rotation': `${index % 2 === 0 ? '5deg' : '-5deg'}`,
-              } as React.CSSProperties} // Asegurar a TypeScript que es válido
-            >
+                cursor: 'pointer' // Add pointer cursor to indicate clickable
+            } as React.CSSProperties}
+        >
             <div className={`card-inner ${isEvenIndex ? 'even' : 'odd'}`}>
-            <span
-                className="card-pin"
-                style={{
-                top: '20px',
-                left: isEvenIndex ? '20px' : 'calc(50% - 6px)',
-                transform: isEvenIndex ? 'rotate(-5deg)' : 'rotate(0)',
-                }}
-            ></span>
+                <span
+                    className="card-pin"
+                    style={{
+                        top: '20px',
+                        left: isEvenIndex ? '20px' : 'calc(50% - 6px)',
+                        transform: isEvenIndex ? 'rotate(-5deg)' : 'rotate(0)',
+                    }}
+                ></span>
 
-            <div className="card-image">
-                <Image
-                src={cover}
-                alt={artistsString}
-                width={100}
-                height={100}
-                priority
-                />
-            </div>
+                <div className="card-image">
+                    <Image
+                        src={cover}
+                        alt={artistsString}
+                        width={100}
+                        height={100}
+                        priority
+                    />
+                </div>
 
-            <div className="card-content">
-                <div className="card-meta">
-                
-                <div className="card-meta-button">
-                    <RiPlayCircleFill className="iplay" />
+                <div className="card-content">
+                    <div className="card-meta">
+                        <div className="card-meta-button">
+                            <PlayButton id={playlist.id} onClick={handlePlayButtonClick} />
+                        </div>
+                    </div>
+                    <h2 className="card-title">{artistsString}</h2>
                 </div>
-                </div>
-                <h2 className="card-title">{artistsString}</h2>
-            </div>
             </div>
         </article>
-        </button>
     );
 };
