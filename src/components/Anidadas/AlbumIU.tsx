@@ -18,6 +18,7 @@ interface AlbumIUProps {
     const truncateText = (text: string, maxLength: number): string => {
         return text.length > maxLength ? `${text.substring(0, maxLength)}...` : text;
     };
+    
 export const AlbumIU: React.FC<AlbumIUProps> = ({ playlist, onClick, index }) => {
 
     // Truncar nombres de artistas si es necesario

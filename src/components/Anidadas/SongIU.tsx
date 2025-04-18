@@ -1,9 +1,9 @@
 "use client"
 
-import { useMusicStore } from '@/store/ui/useMusicStore';
 import Image from 'next/image'
-import React, { useRef } from 'react'
+import React from 'react'
 import { RiPauseCircleFill, RiPlayCircleFill } from 'react-icons/ri'
+import { usePlayerStore } from '@/store/ui/usePlayerStore'
 
 interface Song {
     id: number;
@@ -18,71 +18,66 @@ interface SongIUProps {
     song: Song;
 }
 
-    export const SongIU: React.FC<SongIUProps> = ({ song }) => {
-        const { id, title, image, artists, duration, audioUrl } = song;
+export const SongIU: React.FC<SongIUProps> = ({ song }) => {
+    const { title, image, artists, duration, audioUrl } = song;
     
-        const audioRef = useRef<HTMLAudioElement>(null);
-    
-        // Usa Zustand para manejar el estado
-        const { currentMusic, isPlayer, setCurrentMusic, toggleIsPlayer } = useMusicStore();
-    
-        const playAudio = () => {
-        if (currentMusic.songId !== id) {
+    const {
+        currentMusic,
+        isPlayer,
+        setCurrentMusic,
+        setIsPlayer
+    } = usePlayerStore();
+
+    const playAudio = () => {
+        if (currentMusic.song !== audioUrl) {
             setCurrentMusic({
-            songs: currentMusic.songs,
-            playlist: currentMusic.playlist,
-            songId: id,
+                playlist: null,
+                song: audioUrl,
+                songs: []
             });
+            setIsPlayer(true);
+        } else {
+            setIsPlayer(!isPlayer);
         }
-        toggleIsPlayer();
+    };
     
-        // Controlar la reproducción del audio
-        if (audioRef.current) {
-            if (isCurrentSongPlaying) {
-            audioRef.current.pause();
-            } else {
-            audioRef.current.play();
-            }
-        }
-        };
+    const isCurrentSongPlaying = currentMusic.song === audioUrl && isPlayer;
     
-        const isCurrentSongPlaying = currentMusic.songId === id && isPlayer;
-        return (
-            <section className="card-container">
-        <article className="card horizontal">
-            <div className="card-inner">
-            <span className="card-pin simple"></span>
-            <div className="card-image">
-                <Image
-                src={image}
-                alt={artists.join(", ")}
-                width={100} // Ajusta el tamaño según tus necesidades
-                height={100}
-                priority
-                />
-            </div>
-            <div className="card-content">
-                <div className="card-meta">
-                <span className="card-meta-artist">
-                    {artists.join(", ")}
-                </span>
-                <button className="card-meta-button" onClick={playAudio}>
-                    {isCurrentSongPlaying ? (
-                    <RiPauseCircleFill className="player_icon" />
-                    ) : (
-                    <RiPlayCircleFill className="player_icon" />
-                    )}
-                </button>
+    return (
+        <section className="card-container">
+            <article className="card horizontal">
+                <div className="card-inner">
+                    <span className="card-pin simple"></span>
+                    <div className="card-image">
+                        <Image
+                            src={image}
+                            alt={artists.join(", ")}
+                            width={100}
+                            height={100}
+                            priority
+                        />
+                    </div>
+                    <div className="card-content">
+                        <div className="card-meta">
+                            <span className="card-meta-artist">
+                                {artists.join(", ")}
+                            </span>
+                            <button className="card-meta-button" onClick={playAudio}>
+                                {isCurrentSongPlaying ? (
+                                    <RiPauseCircleFill className="player_icon" />
+                                ) : (
+                                    <RiPlayCircleFill className="player_icon" />
+                                )}
+                            </button>
+                        </div>
+                        <h2 className="card-title">
+                            {title}
+                            <span className="card-time">{duration}</span>
+                        </h2>
+                    </div>
+                    <span className="card-pin simple"></span>
                 </div>
-                <h2 className="card-title">
-                {title}
-                <span className="card-time">{duration}</span>
-                </h2>
-            </div>
-            <span className="card-pin simple"></span>
-            </div>
-            <audio ref={audioRef} src={audioUrl}></audio>
-        </article>
+            </article>
         </section>
     )
 }
