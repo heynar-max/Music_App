@@ -28,6 +28,39 @@
     font-size: 2.5rem;
 }
 
+.player_image{
+    margin-left: .5rem;
+    border-radius: 5px;
+}
+
+.player_image-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 180px;
+}
+
+.player_track-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.player_title {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.player_artist {
+    font-size: 0.8rem;
+    color: #424242;
+}
+
+.player_boton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
 @media screen and (max-width:800px){
     .player_content{
         margin-bottom: 5.6rem;

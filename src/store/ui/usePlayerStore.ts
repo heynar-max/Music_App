@@ -1,9 +1,18 @@
 import { create } from 'zustand';
 
+interface Song {
+    id: string;
+    title: string;
+    artists: string;
+    image: string;
+    audioUrl: string;
+    duration?: number;
+}
+
 interface CurrentMusic {
     playlist: string | null;
-    song: string | null;
-    songs: string[];
+    song: Song | null;
+    songs: Song[];
 }
 
 interface PlayerState {

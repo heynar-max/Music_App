@@ -9,7 +9,7 @@ interface Song {
     id: number;
     title: string;
     image: string;
-    artists: string[];
+    artists: string;
     duration: string;
     audioUrl: string;
 }
@@ -29,10 +29,17 @@ export const SongIU: React.FC<SongIUProps> = ({ song }) => {
     } = usePlayerStore();
 
     const playAudio = () => {
-        if (currentMusic.song !== audioUrl) {
+        if (currentMusic.song?.audioUrl !== audioUrl) {
             setCurrentMusic({
                 playlist: null,
-                song: audioUrl,
+                song: {
+                    id: song.id.toString(),
+                    title,
+                    artists,
+                    image,
+                    audioUrl,
+                    
+                },
                 songs: []
             });
             setIsPlayer(true);
@@ -41,7 +48,7 @@ export const SongIU: React.FC<SongIUProps> = ({ song }) => {
         }
     };
     
-    const isCurrentSongPlaying = currentMusic.song === audioUrl && isPlayer;
+    const isCurrentSongPlaying = currentMusic.song?.audioUrl === audioUrl && isPlayer;
     
     return (
         <section className="card-container">
@@ -51,7 +58,7 @@ export const SongIU: React.FC<SongIUProps> = ({ song }) => {
                     <div className="card-image">
                         <Image
                             src={image}
-                            alt={artists.join(", ")}
+                            alt={artists}
                             width={100}
                             height={100}
                             priority
@@ -60,7 +67,7 @@ export const SongIU: React.FC<SongIUProps> = ({ song }) => {
                     <div className="card-content">
                         <div className="card-meta">
                             <span className="card-meta-artist">
-                                {artists.join(", ")}
+                                {artists}
                             </span>
                             <button className="card-meta-button" onClick={playAudio}>
                                 {isCurrentSongPlaying ? (

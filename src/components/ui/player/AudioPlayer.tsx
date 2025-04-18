@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import '../../../style/player.css'
 import { RiPlayCircleFill, RiPauseCircleFill } from "react-icons/ri";
 import { usePlayerStore } from '@/store/ui/usePlayerStore';
+import Image from 'next/image';
 
 export const Player = () => {
     const audioRef = useRef<HTMLAudioElement>(null);
@@ -23,7 +24,7 @@ export const Player = () => {
 
     useEffect(() => {
         if (audioRef.current && currentMusic.song) {
-            audioRef.current.src = currentMusic.song;
+            audioRef.current.src = currentMusic.song.audioUrl;
             if (isPlayer) {
                 audioRef.current.play().catch(e => console.error("Error al reproducir:", e));
             } else {
@@ -35,14 +36,28 @@ export const Player = () => {
     return (
         <div className="player_container">
             <div className='player_content'>
-                <div>
-                    {/* Mostrar información de la canción actual */}
-                    {currentMusic.song && (
-                        <div className="now-playing">
-                            {/* Aquí puedes mostrar la imagen y detalles de la canción */}
-                        </div>
-                    )}
+                <div className='player_image-container'>
+                    {currentMusic.song ? (
+                            <>
+                                <Image
+                                    src={currentMusic.song.image}
+                                    alt={`Portada de ${currentMusic.song.title}`}
+                                    width={40}
+                                    height={40}
+                                    className='player_image'
+                                />
+                                <div className='player_track-info'>
+                                    <span className='player_title'>{currentMusic.song.title}</span>
+                                    <span className='player_artist'>{currentMusic.song.artists}</span>
+                                </div>
+                            </>
+                        ) : (
+                            <div className='player_image-placeholder'>
+                                <span></span>
+                            </div>
+                        )}
                 </div>
+                
                 <div className='player_player'>
                     <button className='player_boton' onClick={toggleIsPlayer}>
                         {isPlayer ? 
@@ -52,7 +67,7 @@ export const Player = () => {
                     <audio ref={audioRef} />
                 </div>
                 <div>
-                    {/* Controles de volumen */}
+                    volumen..
                 </div>
             </div>
         </div>
