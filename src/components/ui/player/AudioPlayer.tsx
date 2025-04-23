@@ -18,7 +18,8 @@ export const Player = () => {
         isPlayer,
         toggleIsPlayer,
         setAudioElement,
-        currentMusic
+        currentMusic,
+        playNextSong
     } = usePlayerStore();
 
     // Configuración inicial del audio
@@ -40,14 +41,14 @@ export const Player = () => {
 
         audio.addEventListener('timeupdate', updateTime);
         audio.addEventListener('durationchange', updateDuration);
-        audio.addEventListener('ended', () => toggleIsPlayer());
+        audio.addEventListener('ended', playNextSong);
 
         return () => {
             audio.removeEventListener('timeupdate', updateTime);
             audio.removeEventListener('durationchange', updateDuration);
-            audio.removeEventListener('ended', () => toggleIsPlayer());
+            audio.removeEventListener('ended', playNextSong);
         };
-    }, [setAudioElement, toggleIsPlayer, volume]);
+    }, [setAudioElement, playNextSong, volume]);
 
     // Manejo de reproducción
     useEffect(() => {

@@ -16,9 +16,10 @@ interface Song {
 
 interface SongIUProps {
     song: Song;
+    allSongs: Song[];
 }
 
-export const SongIU: React.FC<SongIUProps> = ({ song }) => {
+export const SongIU: React.FC<SongIUProps> = ({ song, allSongs }) => {
     const { title, image, artists, duration, audioUrl } = song;
     
     const {
@@ -38,9 +39,14 @@ export const SongIU: React.FC<SongIUProps> = ({ song }) => {
                     artists,
                     image,
                     audioUrl,
-                    
                 },
-                songs: []
+                songs: allSongs.map(s => ({  // Usa allSongs en lugar de sortedSongs
+                    id: s.id.toString(),
+                    title: s.title,
+                    artists: s.artists,
+                    image: s.image,
+                    audioUrl: s.audioUrl
+                }))
             });
             setIsPlayer(true);
         } else {

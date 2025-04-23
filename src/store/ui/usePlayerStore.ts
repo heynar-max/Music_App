@@ -23,6 +23,7 @@ interface PlayerState {
     toggleIsPlayer: () => void;
     setCurrentMusic: (music: CurrentMusic) => void;
     setAudioElement: (element: HTMLAudioElement) => void;
+    playNextSong: () => void;
 }
 
 export const usePlayerStore = create<PlayerState>((set, get) => ({
@@ -42,4 +43,35 @@ export const usePlayerStore = create<PlayerState>((set, get) => ({
     setCurrentMusic: (music) => set({ currentMusic: music }),
     
     setAudioElement: (element) => set({ audioElement: element }),
+
+    playNextSong: () => {
+        const { currentMusic, audioElement } = get();
+        if (!currentMusic.song || currentMusic.songs.length === 0) return;
+
+        const currentIndex = currentMusic.songs.findIndex(
+            song => song.audioUrl === currentMusic.song?.audioUrl
+        );
+
+        if (currentIndex === -1 || currentIndex === currentMusic.songs.length - 1) {
+            // Si no hay más canciones o es la última, simplemente pausa
+            set({ isPlayer: false });
+            return;
+        }
+
+        const nextSong = currentMusic.songs[currentIndex + 1];
+        set({
+            currentMusic: {
+                ...currentMusic,
+                song: nextSong
+            },
+            isPlayer: true
+        });
+
+        // Necesitamos un pequeño retraso para asegurar que el audio element tenga la nueva URL
+        setTimeout(() => {
+            if (audioElement) {
+                audioElement.play().catch(e => console.error("Error al reproducir:", e));
+            }
+        }, 100);
+    },
 }));

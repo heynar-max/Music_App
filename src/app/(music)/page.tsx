@@ -105,14 +105,16 @@ function DescriptionPage() {
 }
 
 function SongPage() {
-
   const sortedSongs = [...songs].sort((a, b) => a.title.localeCompare(b.title));
 
   return (
     <div className="song-list">
-      {/* Mapear las canciones ordenadas */}
       {sortedSongs.map((song) => (
-        <SongIU key={`${song.albumId}-${song.id}`} song={song} />
+        <SongIU 
+          key={`${song.albumId}-${song.id}`} 
+          song={song} 
+          allSongs={sortedSongs}  // Pasa todas las canciones ordenadas
+        />
       ))}
     </div>
   );
