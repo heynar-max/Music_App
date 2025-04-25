@@ -24,6 +24,7 @@ interface PlayerState {
     setCurrentMusic: (music: CurrentMusic) => void;
     setAudioElement: (element: HTMLAudioElement) => void;
     playNextSong: () => void;
+    playPreviousSong: () => void;
 }
 
 export const usePlayerStore = create<PlayerState>((set, get) => ({
@@ -74,4 +75,28 @@ export const usePlayerStore = create<PlayerState>((set, get) => ({
             }
         }, 100);
     },
+
+    playPreviousSong: () => {
+        const { currentMusic, audioElement } = get();
+        if (!currentMusic.song || currentMusic.songs.length === 0) return;
+
+        const currentIndex = currentMusic.songs.findIndex(
+            song => song.audioUrl === currentMusic.song?.audioUrl
+        );
+
+        if (currentIndex <= 0) return;
+
+        const prevSong = currentMusic.songs[currentIndex - 1];
+        set({
+            currentMusic: { ...currentMusic, song: prevSong },
+            isPlayer: true
+        });
+
+        setTimeout(() => {
+            if (audioElement) {
+                audioElement.play().catch(e => console.error("Error al reproducir:", e));
+            }
+        }, 100);
+    }
+    
 }));

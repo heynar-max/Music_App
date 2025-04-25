@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import '../../../style/player.css'
-import { RiPlayCircleFill, RiPauseCircleFill} from "react-icons/ri";
+import { RiPlayCircleFill, RiPauseCircleFill, RiSkipBackFill, RiSkipForwardFill} from "react-icons/ri";
 import { usePlayerStore } from '@/store/ui/usePlayerStore';
 import Image from 'next/image';
 import { IoVolumeHigh, IoVolumeMute } from 'react-icons/io5';
@@ -19,7 +19,8 @@ export const Player = () => {
         toggleIsPlayer,
         setAudioElement,
         currentMusic,
-        playNextSong
+        playNextSong,
+        playPreviousSong,
     } = usePlayerStore();
 
     // Configuración inicial del audio
@@ -151,11 +152,13 @@ export const Player = () => {
                     </div>
                     
                     <div className='player_buttons'>
+                    <button className='player_boton_next' onClick={playPreviousSong}><RiSkipBackFill /></button>
                         <button className='player_boton' onClick={toggleIsPlayer}>
                             {isPlayer ? 
                                 <RiPauseCircleFill className='player_icon'/> : 
                                 <RiPlayCircleFill className='player_icon' />}
                         </button>
+                        <button className='player_boton_next' onClick={playNextSong}><RiSkipForwardFill /></button>
                     </div>
                 </div>
                 

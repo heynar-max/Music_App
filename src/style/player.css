@@ -24,10 +24,12 @@
     cursor: pointer;
 }
 .player_boton{
-    width: 35px;
-    background-color: var(--c-blue-500);
-    border: none;
     cursor: pointer;
+    margin: 0 10px 0 10px;
+}
+.player_boton_next{
+    cursor: pointer;
+    margin: 0 10px 0 10px;
 }
 .player_icon{
     font-size: 2.5rem;
@@ -135,6 +137,7 @@
 
 .player_buttons {
     margin-top: 3px;
+    display: flex;
 }
 
 .player_volume-controls {
@@ -249,8 +252,10 @@
     .player_time_mobile{
         display: none;
     }
+    .player_boton_next{
+        display: none;
+    }
 }
-
 
 
 
