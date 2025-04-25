@@ -17,10 +17,14 @@ interface CurrentMusic {
 
 interface PlayerState {
     isPlayer: boolean;
+    isShuffle: boolean;
+    isRepeat: boolean;
     currentMusic: CurrentMusic;
     audioElement: HTMLAudioElement | null;
     setIsPlayer: (value: boolean) => void;
     toggleIsPlayer: () => void;
+    toggleShuffle: () => void;
+    toggleRepeat: () => void;
     setCurrentMusic: (music: CurrentMusic) => void;
     setAudioElement: (element: HTMLAudioElement) => void;
     playNextSong: () => void;
@@ -29,6 +33,8 @@ interface PlayerState {
 
 export const usePlayerStore = create<PlayerState>((set, get) => ({
     isPlayer: false,
+    isShuffle: false,
+    isRepeat: false,
     currentMusic: { playlist: null, song: null, songs: [] },
     audioElement: null,
 
@@ -40,39 +46,44 @@ export const usePlayerStore = create<PlayerState>((set, get) => ({
 
         set({ isPlayer: !isPlayer });
     },
+
+    toggleShuffle: () => set((state) => ({ isShuffle: !state.isShuffle })),
+    toggleRepeat: () => set((state) => ({ isRepeat: !state.isRepeat })),
     
     setCurrentMusic: (music) => set({ currentMusic: music }),
     
     setAudioElement: (element) => set({ audioElement: element }),
 
     playNextSong: () => {
-        const { currentMusic, audioElement } = get();
-        if (!currentMusic.song || currentMusic.songs.length === 0) return;
+        const { currentMusic, audioElement, isShuffle, isRepeat } = get();
+        const { songs, song } = currentMusic;
 
-        const currentIndex = currentMusic.songs.findIndex(
-            song => song.audioUrl === currentMusic.song?.audioUrl
-        );
+        if (!song || songs.length === 0) return;
 
-        if (currentIndex === -1 || currentIndex === currentMusic.songs.length - 1) {
-            // Si no hay más canciones o es la última, simplemente pausa
-            set({ isPlayer: false });
-            return;
+        const currentIndex = songs.findIndex(s => s.audioUrl === song.audioUrl);
+
+        let nextSong: Song | null = null;
+
+        if (isRepeat) {
+            nextSong = song; // repetir misma canción
+        } else if (isShuffle) {
+            const remainingSongs = songs.filter(s => s.audioUrl !== song.audioUrl);
+            nextSong = remainingSongs[Math.floor(Math.random() * remainingSongs.length)];
+        } else {
+            if (currentIndex === -1 || currentIndex === songs.length - 1) {
+                set({ isPlayer: false });
+                return;
+            }
+            nextSong = songs[currentIndex + 1];
         }
 
-        const nextSong = currentMusic.songs[currentIndex + 1];
         set({
-            currentMusic: {
-                ...currentMusic,
-                song: nextSong
-            },
+            currentMusic: { ...currentMusic, song: nextSong },
             isPlayer: true
         });
 
-        // Necesitamos un pequeño retraso para asegurar que el audio element tenga la nueva URL
         setTimeout(() => {
-            if (audioElement) {
-                audioElement.play().catch(e => console.error("Error al reproducir:", e));
-            }
+            audioElement?.play().catch(e => console.error("Error al reproducir:", e));
         }, 100);
     },
 

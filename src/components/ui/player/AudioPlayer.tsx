@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import '../../../style/player.css'
-import { RiPlayCircleFill, RiPauseCircleFill, RiSkipBackFill, RiSkipForwardFill} from "react-icons/ri";
+import { RiPlayCircleFill, RiPauseCircleFill, RiSkipBackFill, RiSkipForwardFill, RiShuffleFill, RiRepeatOneFill} from "react-icons/ri";
 import { usePlayerStore } from '@/store/ui/usePlayerStore';
 import Image from 'next/image';
 import { IoVolumeHigh, IoVolumeMute } from 'react-icons/io5';
@@ -21,6 +21,10 @@ export const Player = () => {
         currentMusic,
         playNextSong,
         playPreviousSong,
+        isShuffle,
+        toggleShuffle,
+        isRepeat,
+        toggleRepeat
     } = usePlayerStore();
 
     // Configuración inicial del audio
@@ -152,14 +156,40 @@ export const Player = () => {
                     </div>
                     
                     <div className='player_buttons'>
-                    <button className='player_boton_next' onClick={playPreviousSong}><RiSkipBackFill /></button>
+                        <button onClick={toggleShuffle} 
+                                className={`player_boton_toggle ${isShuffle ? 'active' : ''}`}
+                                title="Modo aleatorio"
+                                >
+                            <RiShuffleFill />
+                        </button>
+
+                        <button className='player_boton_next' 
+                                onClick={playPreviousSong}
+                                title="Anterior"
+                                >
+                                <RiSkipBackFill />
+                        </button>
+
                         <button className='player_boton' onClick={toggleIsPlayer}>
                             {isPlayer ? 
-                                <RiPauseCircleFill className='player_icon'/> : 
-                                <RiPlayCircleFill className='player_icon' />}
+                            <RiPauseCircleFill className='player_icon' title="Pausa" />  : 
+                            <RiPlayCircleFill className='player_icon' title="Play" />}
                         </button>
-                        <button className='player_boton_next' onClick={playNextSong}><RiSkipForwardFill /></button>
-                    </div>
+
+                        <button className='player_boton_next' 
+                                onClick={playNextSong}
+                                title="Siguiente"
+                                >
+                                <RiSkipForwardFill />
+                        </button>
+
+                        <button onClick={toggleRepeat} 
+                                className={`player_boton_toggle ${isRepeat ? 'active' : ''}`}
+                                title="Repetir"
+                                >
+                            <RiRepeatOneFill />
+                        </button>
+                        </div>
                 </div>
                 
                 <div className='player_volume-controls'>

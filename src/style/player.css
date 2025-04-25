@@ -30,7 +30,20 @@
 .player_boton_next{
     cursor: pointer;
     margin: 0 10px 0 10px;
+    font-size: 1.5rem;
 }
+.player_boton_toggle{
+    cursor: pointer;
+    margin: 0 10px 0 10px;
+    color: var(--c-gray-900);
+    transition: color 0.3s ease;
+    font-size: 1.5rem;
+}
+
+.player_boton_toggle.active {
+color: #f9bc73;
+}
+
 .player_icon{
     font-size: 2.5rem;
 }
@@ -253,6 +266,9 @@
         display: none;
     }
     .player_boton_next{
+        display: none;
+    }
+    .player_boton_toggle{
         display: none;
     }
 }
