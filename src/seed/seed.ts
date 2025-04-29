@@ -139,7 +139,7 @@ export const songs: Song[] = [
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233474/bbazezygjc6isnmsaikk.jpg",
     artists: ["Arctic Monkeys"],
     album: "AM",
-    duration: "2:21",
+    duration: "4:32",
     genre: "Rock",
     audioUrl: "/music/2/6.mp3"
 },
@@ -161,7 +161,7 @@ export const songs: Song[] = [
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233474/bbazezygjc6isnmsaikk.jpg",
     artists: ["Arctic Monkeys"],
     album: "AM",
-    duration: "3:16",
+    duration: "4:14",
     genre: "Rock",
     audioUrl: "/music/2/8.mp3"
 },
@@ -382,7 +382,7 @@ export const songs: Song[] = [
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233861/o2eqjyznckselkg8br6e.jpg",
     artists: ["Qodes"],
     album: "Poison Sencillo",
-    duration: "4:20",
+    duration: "3:30",
     genre: "Dance",
     audioUrl: "/music/7/28.mp3"
 },
@@ -404,7 +404,7 @@ export const songs: Song[] = [
     image: "https://res.cloudinary.com/dzty81hol/image/upload/v1714233861/o2eqjyznckselkg8br6e.jpg",
     artists: ["David Guetta"],
     album: "I´m Good(Blue)",
-    duration: "3:11",
+    duration: "2:55",
     genre: "Dance",
     audioUrl: "/music/7/30.mp3"
 },

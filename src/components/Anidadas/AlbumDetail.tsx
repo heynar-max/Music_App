@@ -62,8 +62,12 @@ export default function AlbumDetail({ albumId, onClose }: AlbumDetailProps) {
                     
                 </div>
                 <div className="song-list">
-                    {albumSongs.map((song) => (
-                    <SongIU key={song.id} song={song} />
+                {albumSongs.map((song) => (
+                    <SongIU
+                        key={song.id}
+                        song={song}
+                        allSongs={albumSongs} // Esto limita la playlist al álbum
+                    />
                     ))}
                 </div>
         </section>

@@ -3,6 +3,7 @@ import { SongIU } from "./SongIU"
 import Image from "next/image";
 import { durationToSeconds, secondsToHoursMinutes } from "@/helpers/timeUtils";
 import { useMemo } from "react";
+import { usePlayerStore } from "@/store";
 
 interface ArtistDetailProps {
     artist: string;
@@ -11,7 +12,7 @@ interface ArtistDetailProps {
   
 export  const ArtistDetail: React.FC<ArtistDetailProps> = ({ artist, onBack }) => {
     // Filtrar canciones que incluyan al artista
-    const artistSongs = songs.filter((song) => song.artists?.includes(artist));
+    const artistSongs = songs.filter((song) => song.artists?.includes(artist)) || [];
 
     // Calcular la duración total de las canciones del artista
     const totalDuration = useMemo(() => {
@@ -19,8 +20,25 @@ export  const ArtistDetail: React.FC<ArtistDetailProps> = ({ artist, onBack }) =
       return secondsToHoursMinutes(totalSeconds);
   }, [artistSongs])
     
-    // Buscar la playlist del artista para obtener su cover
-    const artistPlaylist = playlists.find((playlist) => playlist.artists.includes(artist));
+    // Obtener imagen del artista
+  const artistPlaylist = playlists.find((playlist) => 
+    playlist.artists?.includes(artist)
+  );
+
+  // Funcionalidad del reproductor
+  const { setCurrentMusic, setIsPlayer } = usePlayerStore();
+
+  const handlePlayAll = () => {
+    if (artistSongs.length > 0) {
+      setCurrentMusic({
+        playlist: `artist-${artist}`,
+        song: artistSongs[0],
+        songs: artistSongs,
+      });
+      setIsPlayer(true);
+    }
+  };
+
   
     return (
       <div className="album-detail">
@@ -51,15 +69,30 @@ export  const ArtistDetail: React.FC<ArtistDetailProps> = ({ artist, onBack }) =
       <h1 className="pageMusic_h1">Canciones de <span className="pageMusic-span">{artist}</span></h1>
             <p className="pageMusic_span">Duración total: {totalDuration}</p>
             
+      </div>  
       </div>
-      </div>
-        <div className="song-list">
-          {artistSongs.length > 0 ? (
-            artistSongs.map((song) => <SongIU key={song.id} song={song} />)
-          ) : (
+
+        <div className="songs-list">
+        {artistSongs.length > 0 ? (
+          artistSongs.map((song) => (
+            <SongIU
+              key={`${song.id}-${song.title}`}
+              song={song}
+              allSongs={artistSongs}
+            />
+          ))
+        ) : (
+          <div className="no-songs-message">
             <p>No hay canciones disponibles para este artista.</p>
-          )}
-        </div>
+            <button 
+              className="secondary-button"
+              onClick={onBack}
+            >
+              Explorar otros artistas
+            </button>
+          </div>
+        )}
       </div>
-    );
-  };
+    </div>
+  );
+};

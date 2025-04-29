@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { PlayButton } from '../ui/player/PlayBoton';
+import { songs } from '@/seed/seed';
 
 
 interface Playlist {
@@ -37,6 +38,8 @@ export const CardArtist: React.FC<CardArtistProps> = ({ playlist, index, onArtis
         onArtistClick?.(artists[0]);
     };
 
+    const artistSongs = songs.filter(song => song.artists.includes(artists[0]));
+
     return (
         <article
             className="card"
@@ -69,7 +72,11 @@ export const CardArtist: React.FC<CardArtistProps> = ({ playlist, index, onArtis
                 <div className="card-content">
                     <div className="card-meta">
                         <div className="card-meta-button">
-                            <PlayButton id={playlist.id} onClick={handlePlayButtonClick} />
+                            <PlayButton 
+                                id={playlist.id} 
+                                onClick={handlePlayButtonClick} 
+                                customSongs={artistSongs}
+                                />
                         </div>
                     </div>
                     <h2 className="card-title">{artistsString}</h2>
