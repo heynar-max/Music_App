@@ -63,7 +63,7 @@ export default async function GenrePage({ params }: { params: { genre: string } 
             {/* Mostrar las canciones filtradas */}
             <div className="song-list">
                 {filteredSongs.map((song) => (
-                    <SongIU key={song.id} song={song} />
+                    <SongIU key={song.id} song={song} allSongs={filteredSongs} />
                 ))}
             </div>
         </div>
