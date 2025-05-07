@@ -1,4 +1,35 @@
 import { Playlist, Song } from "./types";
+import bcryptjs from 'bcryptjs';
+
+interface SeedUser {
+    email: string;
+    password: string;
+    name: string;
+    role: 'admin'|'user'
+}
+
+interface SeedData {
+    users: SeedUser[];
+}
+
+export const initialData: SeedData = {
+
+    users: [
+        {
+        email: 'heynar@google.com',
+        name: 'Heynar Soto',
+        password: bcryptjs.hashSync('123456'),
+        role: 'admin'
+    },
+    {
+        email: 'janeth@google.com',
+        name: 'janeth narvaez',
+        password: bcryptjs.hashSync('123456'),
+        role: 'user'
+    },
+
+    ],
+}
 
 
 export const playlists: Playlist[] = [

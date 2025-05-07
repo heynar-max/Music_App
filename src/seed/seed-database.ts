@@ -1,8 +1,23 @@
 import { prisma } from "../lib/prima";
-import { playlists, songs } from "./seed";
+import { initialData, playlists, songs } from "./seed";
  // Asegúrate de importar el archivo correcto
 
 async function main() {
+
+
+    await prisma.user.deleteMany();
+
+     // Inserta usuarios
+    const {  users } = initialData;
+
+    await prisma.user.createMany({
+        data: users
+    });
+
+    // se hace un seed para cargar los users
+    // npm run seed 
+
+    
     // Insertar Playlists sin `id` (Prisma genera UUID)
     await prisma.playlist.createMany({
         data: playlists.map(({ albumId, title, cover, artists, genre }) => ({
