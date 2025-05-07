@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { LoginForm } from "./ui/LoginForm";
+
 
 
 export default function Login() {
@@ -7,44 +8,8 @@ export default function Login() {
             <div className="login-card">
                 <h1 className={ ` text-4xl mb-5` }>Ingresar</h1>
 
-                <div className="flex flex-col">
-
-                    <label htmlFor="email">Correo electrónico</label>
-                    <input
-                    id="email"
-                    className="login-input"
-                    type="email"
-                    autoComplete="email"/>
-
-
-                    <label htmlFor="password">Contraseña</label>
-                    <input
-                    id="password"
-                    className="login-input"
-                    type="password" 
-                    autoComplete="current-password"/>
-
-                    <button
-                    
-                    className="login-back-button">
-                    Ingresar
-                    </button>
-
-
-                    {/* divisor l ine */ }
-                    <div className="flex items-center my-5">
-                    <div className="flex-1 border-t border-gray-500"></div>
-                    <div className="px-2 text-gray-800">O</div>
-                    <div className="flex-1 border-t border-gray-500"></div>
-                    </div>
-
-                    <Link
-                    href="/auth/new_account" 
-                    className="btn-secondary text-center">
-                    Crear una nueva cuenta
-                    </Link>
-
-                </div>
+            <LoginForm/>
+            
         </div>
     </div>
     
