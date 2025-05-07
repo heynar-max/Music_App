@@ -13,6 +13,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  admin
+  user
+}
+
 model Playlist {
   id       String  @id @default(uuid()) // Si es un string, usa UUID
   albumId  Int
@@ -32,4 +37,18 @@ model Song {
   duration  String
   genre     String?
   audioUrl  String
+
 }
+
+model User {
+  id            String    @id @default(uuid())
+  name          String
+  email         String    @unique
+  emailVerified DateTime?
+  password      String
+  role          Role      @default(user)
+  image         String?
+}
+
+// se migra a la base de datos
+// npx prisma migrate dev --name user-role
