@@ -1,4 +1,7 @@
 import type { NextAuthConfig } from 'next-auth';
+import NextAuth from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
+import { z } from 'zod';
 
 export const authConfig:NextAuthConfig = {
     pages: {
@@ -7,5 +10,29 @@ export const authConfig:NextAuthConfig = {
     },
     providers: [
         
+        Credentials({
+            async authorize(credentials) {
+                const parsedCredentials = z
+                    .object({ email: z.string().email(), password: z.string().min(6) })
+                    .safeParse(credentials);
+
+                    if ( !parsedCredentials.success ) return null;
+
+                    const { email, password } = parsedCredentials.data;
+
+                    console.log({ email, password });
+
+                    // Buscar correo
+                    
+                    // Comparar las contraseñas 
+
+                    // Regresar el usuario 
+
+                    return null;
+                },
+            }),
+
     ]
 }
+
+export const { signIn, signOut, auth } =  NextAuth ( authConfig );
