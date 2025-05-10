@@ -5,7 +5,7 @@ import { useUIStore } from "@/store";
 import clsx from "clsx";
 import { useSession } from "next-auth/react";
 import Link from "next/link"
-import { IoCloseOutline, IoExit, IoHeart, IoLogOut, IoMusicalNotesSharp,  IoPerson, IoSearchOutline, } from "react-icons/io5"
+import { IoCloseOutline, IoExit, IoHeart,  IoLogOut, IoMusicalNotesSharp,  IoPerson, IoSearchOutline, } from "react-icons/io5"
 
 
 export const Sidebar = () => {
@@ -14,7 +14,7 @@ export const Sidebar = () => {
     const closeMenu = useUIStore( state => state.closeSideMenu );
 
     const { data: session } = useSession();
-    console.log({session})
+    const isAuthenticated = !!session?.user;
 
     return (
         <div>
@@ -90,24 +90,33 @@ export const Sidebar = () => {
                     <IoHeart size={ 20 } />
                     <span className="ml-3 text-xl">Favoritos</span>
                     </Link>
-                    <Link
-                    href="/auth/login"
-                    className="link_sidebar"
-                    >
-                    <IoLogOut size={ 20 } />
-                    <span className="ml-3 text-xl">Ingresar</span>
-                    </Link>
-                    <button
-                    className="link_sidebar w-full "
-                    onClick={() => {
-                        logout();
-                        closeMenu();
-                    }}
-                    
-                    >
-                    <IoExit size={ 20 } />
-                    <span className="ml-3 text-xl">Salir</span>
-                    </button>
+
+                    {
+                        isAuthenticated && (
+                            <button
+                                className="link_sidebar w-full"
+                                onClick={() => {
+                                    logout();
+                                    closeMenu();
+                                }}
+                                >
+                                <IoExit size={ 20 } />
+                                <span className="ml-3 text-xl">Salir</span>
+                            </button>
+                        )
+                    }
+                    {
+                        !isAuthenticated && (
+                            <Link
+                                href="/auth/login"
+                                className="link_sidebar w-full"
+                                onClick={ () => closeMenu() }
+                                >
+                                <IoLogOut size={ 20 } />
+                                <span className="ml-3 text-xl">Ingresar</span>
+                            </Link>
+                        )
+                    }
             </nav>
         </div>
     )
