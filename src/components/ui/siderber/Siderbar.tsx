@@ -1,5 +1,6 @@
 'use client';
 
+import { logout } from "@/actions";
 import { useUIStore } from "@/store";
 import clsx from "clsx";
 import Link from "next/link"
@@ -92,13 +93,17 @@ export const Sidebar = () => {
                     <IoLogOut size={ 20 } />
                     <span className="ml-3 text-xl">Ingresar</span>
                     </Link>
-                    <Link
-                    href="/"
-                    className="link_sidebar"
+                    <button
+                    className="link_sidebar w-full "
+                    onClick={() => {
+                        logout();
+                        closeMenu();
+                    }}
+                    
                     >
                     <IoExit size={ 20 } />
                     <span className="ml-3 text-xl">Salir</span>
-                    </Link>
+                    </button>
             </nav>
         </div>
     )
