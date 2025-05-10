@@ -10,6 +10,7 @@ import "../style/Card.css";
 import "../style/genero.css";
 import "../style/PageMusicId.css";
 import "../style/Login.css";
+import { Provider } from "@/components";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -37,7 +38,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Provider>
+          {children}
+        </Provider>
       </body>
     </html>
   );

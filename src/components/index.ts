@@ -8,6 +8,8 @@ export * from './Anidadas/ArtistIU'
 export * from './Anidadas/AlbumDetail'
 export * from './Anidadas/ArtistDetail'
 
+export * from './provider/Provider'
+
 export * from './ui/not-found/PageNotFound'
 
 export * from './ui/title/Title'
