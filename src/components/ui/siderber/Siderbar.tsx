@@ -64,7 +64,8 @@ export const Sidebar = () => {
                         />
                 </div>
                 <Link
-                    href="/"
+                    href="/profile"
+                    onClick={ () => closeMenu() }
                     className="link_sidebar"
                     >
                     <IoPerson size={ 20 } />

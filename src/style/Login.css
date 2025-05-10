@@ -67,7 +67,6 @@
 .login-input{
     padding: 8px 20px;  
     border: 1px solid #d1d5db; 
-    background-color: var(--c-yellow-100);  
     border-radius: 4px;
     margin-bottom: 20px;
 }

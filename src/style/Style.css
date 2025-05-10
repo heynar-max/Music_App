@@ -51,3 +51,10 @@ p {
 .btn-disabled {
 	@apply bg-gray-600 text-black py-2 px-4 rounded transition-all;
 }
+
+.btn-buton {
+	@apply bg-[var(--c-blue-300)] hover:bg-gray-300 text-black py-2 px-4 rounded transition-all;
+}
+.btn-butonprimary {
+	@apply bg-[var(--c-yellow-300)] hover:bg-orange-100 text-black py-2 px-4 rounded transition-all;
+}

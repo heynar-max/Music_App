@@ -12,14 +12,14 @@ export default function New_Account() {
                     <label htmlFor="fullName">Nombre Completo</label>
                     <input
                     id="fullName"
-                    className="login-input"
+                    className="login-input bg-gray-200"
                     type="text"
                     autoComplete="name" />
 
                     <label htmlFor="email">Correo electrónico</label>
                     <input
                     id="email"
-                    className="login-input"
+                    className="login-input bg-gray-200"
                     type="email"
                     autoComplete="email" />
 
@@ -27,13 +27,13 @@ export default function New_Account() {
                     <label htmlFor="password">Contraseña</label>
                     <input
                     id="password"
-                    className="login-input"
+                    className="login-input bg-gray-200"
                     type="email"
                     autoComplete="new-password"/>
 
                     <button
                     
-                    className="login-back-button">
+                    className="btn-butonprimary">
                     Crear cuenta
                     </button>
 
@@ -47,7 +47,7 @@ export default function New_Account() {
 
                     <Link
                     href="/auth/login" 
-                    className="btn-secondary text-center">
+                    className="btn-buton hover:bg-sky-200 text-black py-2 px-4 rounded transition-all  text-center">
                     Ingresar
                     </Link>
 
