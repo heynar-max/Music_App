@@ -12,8 +12,8 @@ export const LoginForm = () => {
 
     const [state, dispatch] = useFormState(authenticate, undefined);
     
-    console.log (state)
 
+// este va en esta session 
     useEffect(() => {
         if ( state === 'Success' ) {
         // redireccionar

@@ -87,7 +87,7 @@ export const Sidebar = () => {
                     <span className="ml-3 text-xl">Favoritos</span>
                     </Link>
                     <Link
-                    href="/"
+                    href="/auth/login"
                     className="link_sidebar"
                     >
                     <IoLogOut size={ 20 } />
