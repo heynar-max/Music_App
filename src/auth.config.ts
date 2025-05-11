@@ -4,7 +4,7 @@ import Credentials from 'next-auth/providers/credentials';
 import { z } from 'zod';
 import { prisma } from './lib/prima';
 import bcryptjs from 'bcryptjs';
-import { use } from 'react';
+
 
 export const authConfig:NextAuthConfig = {
     pages: {
@@ -14,6 +14,21 @@ export const authConfig:NextAuthConfig = {
     },
 
     callbacks: {
+        authorized({ auth, request: { nextUrl } }) {
+            console.log({ auth });
+            // const isLoggedIn = !!auth?.user;
+
+            // const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
+            // if (isOnDashboard) {
+            //     if (isLoggedIn) return true;
+            //   return false; // Redirect unauthenticated users to login page
+            // } else if (isLoggedIn) {
+            //     return Response.redirect(new URL('/dashboard', nextUrl));
+            // }
+            return true;
+
+        },
+
     
         jwt({ token, user }) {
             console.log({ token, user})
