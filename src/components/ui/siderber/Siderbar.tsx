@@ -15,6 +15,7 @@ export const Sidebar = () => {
 
     const { data: session } = useSession();
     const isAuthenticated = !!session?.user;
+    const isAdmin = session?.user.role === "admin";
 
     return (
         <div>
@@ -68,28 +69,36 @@ export const Sidebar = () => {
                             className="w-full bg-gray-50 rounded pl-10 py-1 pr-10 border-b-2 text-xl border-gray-200 focus:outline-none focus:border-green-600"
                         />
                 </div>
-                <Link
-                    href="/profile"
-                    onClick={ () => closeMenu() }
-                    className="link_sidebar"
-                    >
-                    <IoPerson size={ 20 } />
-                    <span className="ml-3 text-xl">Perfil</span>
-                    </Link>
-                    <Link
-                    href="/"
-                    className="link_sidebar"
-                    >
-                    <IoMusicalNotesSharp size={ 20 } />
-                    <span className="ml-3 text-xl">Genero</span>
-                    </Link>
-                    <Link
-                    href="/"
-                    className="link_sidebar"
-                    >
-                    <IoHeart size={ 20 } />
-                    <span className="ml-3 text-xl">Favoritos</span>
-                    </Link>
+                { 
+                    isAuthenticated && (
+                        <>
+                            <Link
+                            href="/profile"
+                            onClick={ () => closeMenu() }
+                            className="link_sidebar"
+                            >
+                            <IoPerson size={ 20 } />
+                            <span className="ml-3 text-xl">Perfil</span>
+                            </Link>
+                            <Link
+                            href="/"
+                            className="link_sidebar"
+                            >
+                            <IoMusicalNotesSharp size={ 20 } />
+                            <span className="ml-3 text-xl">Genero</span>
+                            </Link>
+                            <Link
+                            href="/"
+                            className="link_sidebar"
+                            >
+                            <IoHeart size={ 20 } />
+                            <span className="ml-3 text-xl">Favoritos</span>
+                            </Link>
+                        </>
+                    )
+                }
+
+                
 
                     {
                         isAuthenticated && (
@@ -115,6 +124,14 @@ export const Sidebar = () => {
                                 <IoLogOut size={ 20 } />
                                 <span className="ml-3 text-xl">Ingresar</span>
                             </Link>
+                        )
+                    }
+
+{
+                        isAdmin && (
+                            <>
+                                <h1>hola admin</h1>
+                            </>
                         )
                     }
             </nav>

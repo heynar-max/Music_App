@@ -16,8 +16,6 @@ export const LoginForm = () => {
 // este va en esta session 
     useEffect(() => {
         if ( state === 'Success' ) {
-        // redireccionar
-        // router.replace('/');
         window.location.replace('/');
         }
 
