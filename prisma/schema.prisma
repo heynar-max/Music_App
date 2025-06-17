@@ -25,6 +25,8 @@ model Playlist {
   cover    String
   artists  String[]  // Arrays en Prisma usan `String[]`
   genre    String?
+
+  Favorites FavoritePlaylist[]
 }
 
 model Song {
@@ -48,7 +50,23 @@ model User {
   password      String
   role          Role      @default(user)
   image         String?
+
+  Favorites FavoritePlaylist[]
 }
 
 // se migra a la base de datos
 // npx prisma migrate dev --name user-role
+
+model FavoritePlaylist {
+  id          String   @id @default(uuid())
+  userId      String
+  playlistId  String
+  createdAt   DateTime @default(now())
+
+  user        User   @relation(fields: [userId], references: [id])
+  playlist    Playlist  @relation(fields: [playlistId], references: [id])
+
+  @@unique([userId, playlistId])
+}
+
+// npx prisma migrate dev --name add-favorites 
