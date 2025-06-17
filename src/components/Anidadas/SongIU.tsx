@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import React from 'react'
-import { RiPauseCircleFill, RiPlayCircleFill } from 'react-icons/ri'
+import { RiHeart3Fill, RiHeartAddLine, RiPauseCircleFill, RiPlayCircleFill } from 'react-icons/ri'
 import { usePlayerStore } from '@/store/ui/usePlayerStore'
 
 interface Song {
@@ -75,6 +75,12 @@ export const SongIU: React.FC<SongIUProps> = ({ song, allSongs }) => {
                             <span className="card-meta-artist">
                                 {artists}
                             </span>
+                            
+                            <div className='card-meta-favorite'>
+                                <button className="card-meta-button" >
+                                    <RiHeartAddLine className="player_icon_favorite" />
+                                </button>
+
                             <button className="card-meta-button" onClick={playAudio}>
                                 {isCurrentSongPlaying ? (
                                     <RiPauseCircleFill className="player_icon" />
@@ -82,6 +88,8 @@ export const SongIU: React.FC<SongIUProps> = ({ song, allSongs }) => {
                                     <RiPlayCircleFill className="player_icon" />
                                 )}
                             </button>
+                            </div>
+                            
                         </div>
                         <h2 className="card-title">
                             {title}

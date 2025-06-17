@@ -224,6 +224,13 @@ color: #f9bc73;
     display: none;
 }
 
+.player_favorite_mobile{
+    display: none;
+}
+.player_favorite{
+    display: flex;
+}
+
 @media screen and (max-width:800px){
     .player_content{
         display: flex;
@@ -249,6 +256,9 @@ color: #f9bc73;
         display: flex;
         align-items: flex-end;
     }
+    .player_favorite_mobile{
+        display: flex;
+    }
 
     .player_volume-controls {
         display: none;
@@ -269,6 +279,9 @@ color: #f9bc73;
         display: none;
     }
     .player_boton_toggle{
+        display: none;
+    }
+    .player_favorite{
         display: none;
     }
 }

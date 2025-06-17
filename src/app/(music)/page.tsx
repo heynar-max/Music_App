@@ -2,18 +2,21 @@
 
 
 
-import { useState } from "react";
-import {  AlbumIU, ArtistDetail, CardArtist,  SongIU, Title } from "@/components";
-import { RiSearchLine } from "react-icons/ri";
+import { useEffect, useState } from "react";
+import {  AlbumIU, ArtistDetail, CardArtist,  SearchPage,  SongIU, Title } from "@/components";
 import { playlists, songs } from "@/seed/seed";
 import AlbumDetail from "@/components/Anidadas/AlbumDetail";
+import Link from "next/link";
+import FavoritePage from "./favorite/page";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 
 
 
 export default function Home() {
   // Estado para manejar la página activa
-  const [activePage, setActivePage] = useState("description");
+  const [activePage, setActivePage] = useState("song");
   const [selectedAlbumId, setSelectedAlbumId] = useState<string | null>(null);
   const [selectedArtist, setSelectedArtist] = useState<string | null>(null);
 
@@ -27,30 +30,16 @@ export default function Home() {
       />
 
       {/* Buscador */}
-      <section className="search">
-        <div className="search-inner">
-          <button className="search-button">
-            <RiSearchLine className="ai-search" />
-          </button>
-          <input
-            type="text"
-            className="search-input"
-            placeholder="Buscar Canción"
-            id="search"
-            name="search-input-1"
-            autoComplete="off"
-          />
-        </div>
+      <section >
+        <Link href='/search'>
+          <SearchPage/>
+        </Link>
+        
       </section>
 
       {/* Barra de navegación */}
       <nav className="navigation">
-        <button
-          onClick={() => setActivePage("description")}
-          className={`navigation-item ${activePage === "description" ? "active" : ""}`}
-        >
-          <h1 className="link_title">Descripción</h1>
-        </button>
+        
         <button
           onClick={() => setActivePage("song")}
           className={`navigation-item ${activePage === "song" ? "active" : ""}`}
@@ -69,11 +58,17 @@ export default function Home() {
         >
           <h1 className="link_title">Artistas</h1>
         </button>
+        <button
+          onClick={() => setActivePage("favorite")}
+          className={`navigation-item ${activePage === "favorite" ? "active" : ""}`}
+        >
+          <h1 className="link_title">Me gusta</h1>
+        </button>
       </nav>
 
       {/* Sección donde se mostrará el contenido dinámico */}
       <div className="content">
-        {activePage === "description" && <DescriptionPage />}
+        {activePage === "favorite" && <FavoritoPage />}
         {activePage === "song" && <SongPage />}
         {activePage === "album" && (
           selectedAlbumId ? (
@@ -95,11 +90,27 @@ export default function Home() {
 }
 
 // Componentes para cada página
-function DescriptionPage() {
+function FavoritoPage() {
+const { data: session, status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.replace("/auth/login?redirectTo=/favorite");
+    }
+  }, [status, router]);
+
+  if (status === "loading") {
+    return <p>Cargando...</p>;
+  }
+
+  if (!session?.user) {
+    return null; // No mostrar nada mientras redirige
+  }
+
   return (
-    <div>
-      <h1>Descripción</h1>
-      <p>Esta es la página de descripción.</p>
+    <div className="favorite-list">
+      <FavoritePage/>
     </div>
   );
 }

@@ -81,7 +81,8 @@ export const Sidebar = () => {
                             <span className="ml-3 text-xl">Perfil</span>
                             </Link>
                             <Link
-                            href="/"
+                            href="/genero"
+                            onClick={ () => closeMenu() }
                             className="link_sidebar"
                             >
                             <IoMusicalNotesSharp size={ 20 } />

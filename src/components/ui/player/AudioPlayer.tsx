@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import '../../../style/player.css'
-import { RiPlayCircleFill, RiPauseCircleFill, RiSkipBackFill, RiSkipForwardFill, RiShuffleFill, RiRepeatOneFill} from "react-icons/ri";
+import { RiPlayCircleFill, RiPauseCircleFill, RiSkipBackFill, RiSkipForwardFill, RiShuffleFill, RiRepeatOneFill, RiHeartAddLine} from "react-icons/ri";
 import { usePlayerStore } from '@/store/ui/usePlayerStore';
 import Image from 'next/image';
 import { IoVolumeHigh, IoVolumeMute } from 'react-icons/io5';
@@ -133,6 +133,11 @@ export const Player = () => {
                             <span></span>
                         </div>
                     )}
+                    <div className='player_favorite'>
+                        <button className="card-meta-button" >
+                                <RiHeartAddLine className="player_icon_favorite" />
+                        </button>
+                    </div>
                 </div>
                 
                 <div className='player_controls'>
@@ -156,6 +161,12 @@ export const Player = () => {
                     </div>
                     
                     <div className='player_buttons'>
+                        <div className='player_favorite_mobile'>
+                            <button className="card-meta-button" >
+                                    <RiHeartAddLine className="player_icon_favorite" />
+                            </button>
+                        </div>
+                                
                         <button onClick={toggleShuffle} 
                                 className={`player_boton_toggle ${isShuffle ? 'active' : ''}`}
                                 title="Modo aleatorio"

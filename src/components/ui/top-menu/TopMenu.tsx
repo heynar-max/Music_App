@@ -87,13 +87,14 @@ export const TopMenu = () => {
 
                 <Link className={`nav-item ${isActive('/genero') ? 'active' : ''}`} href='/genero'>Genero</Link>
 
-                <Link className={`nav-item ${isActive('/favorite') ? 'active' : ''}`} href='/favorite'>Favoritos</Link>
+                <Link className={`nav-item ${isActive('/favorite') ? 'active' : ''}`} href='/favorite'>Me Gusta</Link>
+
                 
             </div>
             {/* Search, Menu  */}
             <div className="flex items-center">
                 <Link href='/search' className="mx-2">
-                    <IoSearchOutline className="w-5 h-5"/>
+                    <IoSearchOutline className="w-6 h-6"/>
                 </Link>
                 
                 <button className="avatar"

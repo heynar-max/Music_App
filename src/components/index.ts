@@ -24,3 +24,5 @@ export * from './ui/player/AudioPlayer'
 export * from './ui/player/PlayBoton'
 
 export * from './ui/footer/Footer'
+
+export * from './ui/search/SearchPage'

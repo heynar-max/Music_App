@@ -4,6 +4,11 @@
     font-size: 2.5rem;
 }
 
+.player_icon_favorite{
+	font-size: 1.5rem;
+	margin-right: .5rem;
+}
+
 .card-container {
 	padding: 1rem 2rem;
 	display: flex;
@@ -61,6 +66,10 @@
 
 		.card-meta-artist {
 			font-weight: 700;
+		}
+
+		.card-meta-favorite{
+			display: flex;
 		}
 
 		.card-title {
@@ -254,6 +263,10 @@
 }
 .song-list{
 	width: 85%;
+}
+
+.favorite-list{
+	width: 100%;
 }
 card-meta-ti{
 	padding-top: 0.75rem;
