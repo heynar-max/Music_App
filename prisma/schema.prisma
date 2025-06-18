@@ -26,7 +26,7 @@ model Playlist {
   artists  String[]  // Arrays en Prisma usan `String[]`
   genre    String?
 
-  Favorites FavoritePlaylist[]
+  
 }
 
 model Song {
@@ -40,6 +40,8 @@ model Song {
   genre     String?
   audioUrl  String
 
+
+  favoriteSongs FavoriteSong[]
 }
 
 model User {
@@ -51,22 +53,23 @@ model User {
   role          Role      @default(user)
   image         String?
 
-  Favorites FavoritePlaylist[]
+  favoriteSongs FavoriteSong[]
 }
 
 // se migra a la base de datos
 // npx prisma migrate dev --name user-role
 
-model FavoritePlaylist {
-  id          String   @id @default(uuid())
-  userId      String
-  playlistId  String
-  createdAt   DateTime @default(now())
 
-  user        User   @relation(fields: [userId], references: [id])
-  playlist    Playlist  @relation(fields: [playlistId], references: [id])
+model FavoriteSong {
+  id        String   @id @default(uuid())
+  userId    String
+  songId    Int
+  createdAt DateTime @default(now())
 
-  @@unique([userId, playlistId])
+  user      User     @relation(fields: [userId], references: [id])
+  song      Song     @relation(fields: [songId], references: [id])
+
+  @@unique([userId, songId])  // Un usuario solo puede agregar una vez esa canción
 }
 
-// npx prisma migrate dev --name add-favorites 
+// npx prisma migrate dev --name clean-favorite-song 

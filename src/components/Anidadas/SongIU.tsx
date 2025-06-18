@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import React from 'react'
-import { RiHeart3Fill, RiHeartAddLine, RiPauseCircleFill, RiPlayCircleFill } from 'react-icons/ri'
+import {  RiHeartAddLine, RiPauseCircleFill, RiPlayCircleFill } from 'react-icons/ri'
 import { usePlayerStore } from '@/store/ui/usePlayerStore'
 
 interface Song {

@@ -2,7 +2,7 @@ export const revalidate = 60;
 
 import { notFound } from "next/navigation";
 import { Generos, SongIU, Title } from "@/components";
-import { prisma } from "@/lib/prima";
+import { prisma } from "@/lib/prisma";
 
 export default async function GenrePage({ params }: { params: { genre: string } }) {
     const { genre } = params;

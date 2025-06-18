@@ -1,4 +1,4 @@
-import { prisma } from "../lib/prima";
+import { prisma } from "../lib/prisma";
 import { initialData, playlists, songs } from "./seed";
  // Asegúrate de importar el archivo correcto
 

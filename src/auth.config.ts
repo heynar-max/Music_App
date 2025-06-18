@@ -2,7 +2,7 @@ import type { NextAuthConfig } from 'next-auth';
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { z } from 'zod';
-import { prisma } from './lib/prima';
+import { prisma } from './lib/prisma';
 import bcryptjs from 'bcryptjs';
 
 
