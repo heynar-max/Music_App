@@ -2,8 +2,15 @@
 
 import Image from 'next/image'
 import React from 'react'
-import {  RiHeartAddLine, RiPauseCircleFill, RiPlayCircleFill } from 'react-icons/ri'
+import {  
+    RiHeartAddLine, 
+    RiHeartFill, 
+    RiPauseCircleFill, 
+    RiPlayCircleFill 
+} from 'react-icons/ri'
+
 import { usePlayerStore } from '@/store/ui/usePlayerStore'
+import { useFavoriteStore } from '@/store/ui/useFavoriteStore'
 
 interface Song {
     id: number;
@@ -29,6 +36,12 @@ export const SongIU: React.FC<SongIUProps> = ({ song, allSongs }) => {
         setIsPlayer
     } = usePlayerStore();
 
+    const {
+        favorites,
+        addFavorite,
+        removeFavorite
+    } = useFavoriteStore();
+
     const playAudio = () => {
         if (currentMusic.song?.audioUrl !== audioUrl) {
             setCurrentMusic({
@@ -40,7 +53,7 @@ export const SongIU: React.FC<SongIUProps> = ({ song, allSongs }) => {
                     image,
                     audioUrl,
                 },
-                songs: allSongs.map(s => ({  // Usa allSongs en lugar de sortedSongs
+                songs: allSongs.map(s => ({  
                     id: s.id.toString(),
                     title: s.title,
                     artists: s.artists,
@@ -53,8 +66,17 @@ export const SongIU: React.FC<SongIUProps> = ({ song, allSongs }) => {
             setIsPlayer(!isPlayer);
         }
     };
-    
+
     const isCurrentSongPlaying = currentMusic.song?.audioUrl === audioUrl && isPlayer;
+    const isFavorite = favorites.includes(song.id);
+
+    const handleToggleFavorite = async () => {
+        if (isFavorite) {
+            await removeFavorite(song.id);
+        } else {
+            await addFavorite(song.id);
+        }
+    };
     
     return (
         <section className="card-container">
@@ -77,17 +99,24 @@ export const SongIU: React.FC<SongIUProps> = ({ song, allSongs }) => {
                             </span>
                             
                             <div className='card-meta-favorite'>
-                                <button className="card-meta-button" >
-                                    <RiHeartAddLine className="player_icon_favorite" />
+                                <button 
+                                    className="card-meta-button" 
+                                    onClick={handleToggleFavorite}
+                                >
+                                    {isFavorite ? (
+                                        <RiHeartFill className="player_icon_favorite " />
+                                    ) : (
+                                        <RiHeartAddLine className="player_icon_favorite" />
+                                    )}
                                 </button>
 
-                            <button className="card-meta-button" onClick={playAudio}>
-                                {isCurrentSongPlaying ? (
-                                    <RiPauseCircleFill className="player_icon" />
-                                ) : (
-                                    <RiPlayCircleFill className="player_icon" />
-                                )}
-                            </button>
+                                <button className="card-meta-button" onClick={playAudio}>
+                                    {isCurrentSongPlaying ? (
+                                        <RiPauseCircleFill className="player_icon" />
+                                    ) : (
+                                        <RiPlayCircleFill className="player_icon" />
+                                    )}
+                                </button>
                             </div>
                             
                         </div>

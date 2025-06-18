@@ -22,6 +22,7 @@ export * from './generos/Generos'
 
 export * from './ui/player/AudioPlayer'
 export * from './ui/player/PlayBoton'
+export * from './ui/player/LoadFavorites'
 
 export * from './ui/footer/Footer'
 

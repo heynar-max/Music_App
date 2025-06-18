@@ -2,39 +2,6 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth.config";
 import { prisma } from "@/lib/prisma";
 
-// GET → saber si la canción está en favoritos
-export async function GET(
-    req: Request,
-    { params }: { params: { id: string } }
-) {
-    const session = await auth();
-
-    if (!session?.user?.email) {
-        return NextResponse.json({ isFavorite: false }, { status: 200 });
-    }
-
-    const user = await prisma.user.findUnique({
-        where: { email: session.user.email },
-    });
-
-    if (!user) {
-        return NextResponse.json({ isFavorite: false }, { status: 200 });
-    }
-
-    const songId = Number(params.id);
-
-    const exists = await prisma.favoriteSong.findUnique({
-        where: {
-            userId_songId: {
-                userId: user.id,
-                songId,
-            },
-        },
-    });
-
-    return NextResponse.json({ isFavorite: !!exists }, { status: 200 });
-}
-
 // POST → agregar a favoritos
 export async function POST(
     req: Request,
