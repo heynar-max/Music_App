@@ -11,6 +11,7 @@ import {
 
 import { usePlayerStore } from '@/store/ui/usePlayerStore'
 import { useFavoriteStore } from '@/store/ui/useFavoriteStore'
+import { useSession } from "next-auth/react";
 
 interface Song {
     id: number;
@@ -70,11 +71,33 @@ export const SongIU: React.FC<SongIUProps> = ({ song, allSongs }) => {
     const isCurrentSongPlaying = currentMusic.song?.audioUrl === audioUrl && isPlayer;
     const isFavorite = favorites.includes(song.id);
 
+    const { data: session } = useSession();
+
     const handleToggleFavorite = async () => {
-        if (isFavorite) {
-            await removeFavorite(song.id);
-        } else {
-            await addFavorite(song.id);
+        if (!session?.user) 
+            return;
+        
+
+        try {
+            if (isFavorite) {
+                // DELETE en API
+                const res = await fetch(`/api/favorite-song/${song.id}`, {
+                    method: "DELETE",
+                });
+
+                if (res.ok) removeFavorite(song.id);
+                else console.error("No se pudo eliminar el favorito");
+            } else {
+                // POST en API
+                const res = await fetch(`/api/favorite-song/${song.id}`, {
+                    method: "POST",
+                });
+
+                if (res.ok) addFavorite(song.id);
+                else console.error("No se pudo agregar el favorito");
+            }
+        } catch (error) {
+            console.error("Error al cambiar favorito:", error);
         }
     };
     
@@ -102,6 +125,11 @@ export const SongIU: React.FC<SongIUProps> = ({ song, allSongs }) => {
                                 <button 
                                     className="card-meta-button" 
                                     onClick={handleToggleFavorite}
+                                    title={
+                                        session?.user
+                                            ? "Agregar o quitar de favoritos"
+                                            : "Debes iniciar sesión para agregar a favoritos"
+                                    }
                                 >
                                     {isFavorite ? (
                                         <RiHeartFill className="player_icon_favorite " />
