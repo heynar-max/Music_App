@@ -27,7 +27,7 @@ export default function FavoritePage() {
                         <SongIU
                             key={`${song.albumId}-${song.id}`}
                             song={song}
-                            allSongs={songs}
+                            allSongs={favoriteSongs}
                         />
                     ))
                 ) : (

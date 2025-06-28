@@ -89,10 +89,12 @@ export const Sidebar = () => {
                             <span className="ml-3 text-xl">Genero</span>
                             </Link>
                             <Link
-                            href="/"
+                            href="/favorite"
+                            onClick={ () => closeMenu() }
                             className="link_sidebar"
                             >
                             <IoHeart size={ 20 } />
+                            
                             <span className="ml-3 text-xl">Favoritos</span>
                             </Link>
                         </>
