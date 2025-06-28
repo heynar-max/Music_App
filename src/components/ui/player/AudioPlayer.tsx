@@ -69,24 +69,31 @@ export const Player = () => {
         };
     }, [setAudioElement, playNextSong, volume]);
 
-    // 👉 SOLO actualiza el src si la canción cambia
     useEffect(() => {
-        if (!audioRef.current || !currentMusic.song) return;
-        if (audioRef.current.src !== currentMusic.song.audioUrl) {
-            audioRef.current.src = currentMusic.song.audioUrl;
-        }
-    }, [currentMusic.song]);
+    const audio = audioRef.current;
+    const song = currentMusic.song;
 
-    // 👉 Solo play o pause según isPlayer
-    useEffect(() => {
-        if (!audioRef.current) return;
+    if (!audio || !song) return;
+
+    const isSameSrc = audio.src.includes(song.audioUrl);
+
+    if (!isSameSrc) {
+        // Si es una nueva canción, actualiza el src y empieza desde 0
+        audio.src = song.audioUrl;
+        audio.currentTime = 0;
 
         if (isPlayer) {
-            audioRef.current.play().catch((e) => console.error("Error al reproducir:", e));
-        } else {
-            audioRef.current.pause();
+            audio.play().catch((e) => console.error("Error al reproducir nueva canción:", e));
         }
-    }, [isPlayer]);
+    } else {
+        // Misma canción: solo pausar o reanudar
+        if (isPlayer) {
+            audio.play().catch((e) => console.error("Error al continuar reproducción:", e));
+        } else {
+            audio.pause();
+        }
+    }
+}, [currentMusic.song, isPlayer]);
 
     useEffect(() => {
         if (!audioRef.current) return;
