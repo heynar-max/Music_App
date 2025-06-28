@@ -13,7 +13,7 @@ export default function FavoritePage() {
         .sort((a, b) => a.title.localeCompare(b.title));
 
     return (
-        <div>
+        <div className="favorite-container">
             <Title
                 titlepagina="Favoritos"
                 title="Escuchando todos los días"

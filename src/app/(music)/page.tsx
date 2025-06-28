@@ -3,13 +3,14 @@
 
 
 import { useEffect, useState } from "react";
-import {  AlbumIU, ArtistDetail, CardArtist,  SearchPage,  SongIU, Title } from "@/components";
+import {  AlbumIU, ArtistDetail, CardArtist, SongIU, Title } from "@/components";
 import { playlists, songs } from "@/seed/seed";
 import AlbumDetail from "@/components/Anidadas/AlbumDetail";
 import Link from "next/link";
 import FavoritePage from "./favorite/page";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { RiSearchLine } from "react-icons/ri";
 
 
 
@@ -32,9 +33,22 @@ export default function Home() {
       {/* Buscador */}
       <section >
         <Link href='/search'>
-          <SearchPage/>
+            <div className="search">
+              <div className="search-inner">
+                  <button className="search-button">
+                      <RiSearchLine className="ai-search" />
+                  </button>
+                  <input
+                      type="text"
+                      className="search-input"
+                      placeholder="Buscar Canción"
+                      id="search"
+                      name="search-input-1"
+                      autoComplete="off"
+                  />
+              </div>
+          </div>
         </Link>
-        
       </section>
 
       {/* Barra de navegación */}

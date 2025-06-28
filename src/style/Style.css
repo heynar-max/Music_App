@@ -40,6 +40,10 @@ p {
 	margin-top: 0.375em;
 }
 
+.favorite-container{
+	margin-bottom: 3rem;
+}
+
 .btn-primary {
 	@apply bg-blue-600 hover:bg-blue-800 text-white py-2 px-4 rounded transition-all;
 }

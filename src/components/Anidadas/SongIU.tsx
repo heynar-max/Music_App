@@ -24,7 +24,7 @@ interface Song {
 
 interface SongIUProps {
     song: Song;
-    allSongs: Song[];
+    allSongs?: Song[];
 }
 
 export const SongIU: React.FC<SongIUProps> = ({ song, allSongs }) => {
@@ -43,6 +43,8 @@ export const SongIU: React.FC<SongIUProps> = ({ song, allSongs }) => {
         removeFavorite
     } = useFavoriteStore();
 
+    const songsList = Array.isArray(allSongs) ? allSongs : [song];
+    
     const playAudio = () => {
         if (currentMusic.song?.audioUrl !== audioUrl) {
             setCurrentMusic({
@@ -54,7 +56,7 @@ export const SongIU: React.FC<SongIUProps> = ({ song, allSongs }) => {
                     image,
                     audioUrl,
                 },
-                songs: allSongs.map(s => ({  
+                songs: songsList.map(s => ({  
                     id: s.id.toString(),
                     title: s.title,
                     artists: s.artists,
