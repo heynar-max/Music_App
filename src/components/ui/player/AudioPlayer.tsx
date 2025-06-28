@@ -69,15 +69,24 @@ export const Player = () => {
         };
     }, [setAudioElement, playNextSong, volume]);
 
+    // 👉 SOLO actualiza el src si la canción cambia
     useEffect(() => {
         if (!audioRef.current || !currentMusic.song) return;
-        audioRef.current.src = currentMusic.song.audioUrl;
+        if (audioRef.current.src !== currentMusic.song.audioUrl) {
+            audioRef.current.src = currentMusic.song.audioUrl;
+        }
+    }, [currentMusic.song]);
+
+    // 👉 Solo play o pause según isPlayer
+    useEffect(() => {
+        if (!audioRef.current) return;
+
         if (isPlayer) {
             audioRef.current.play().catch((e) => console.error("Error al reproducir:", e));
         } else {
             audioRef.current.pause();
         }
-    }, [currentMusic, isPlayer]);
+    }, [isPlayer]);
 
     useEffect(() => {
         if (!audioRef.current) return;
