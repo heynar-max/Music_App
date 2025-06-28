@@ -38,7 +38,12 @@ export const CardArtist: React.FC<CardArtistProps> = ({ playlist, index, onArtis
         onArtistClick?.(artists[0]);
     };
 
-    const artistSongs = songs.filter(song => song.artists.includes(artists[0]));
+    const artistSongs = songs
+        .filter(song => song.artists.includes(artists[0]))
+        .map(song => ({
+            ...song,
+            genre: song.genre ?? null, // 🔹 Asegura que genre no sea undefined
+        }));
 
     return (
         <article

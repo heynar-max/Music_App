@@ -1,19 +1,28 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { RiSearchLine } from "react-icons/ri";
 import { SongIU } from "@/components";
-import { songs } from "@/seed/seed";
+import { songs as seedSongs } from "@/seed/seed";
+import { formatSongs } from "@/utils/formatSong";
+
 
 export const SearchPage = () => {
     const [query, setQuery] = useState("");
 
-    const filteredSongs = songs.filter((song) =>
-        song.title.toLowerCase().includes(query.toLowerCase()) ||
-        song.artists.join(" ").toLowerCase().includes(query.toLowerCase())
-    );
+    // Formatear las canciones del seed para que tengan artists como string y id como string
+    const formattedSongs = useMemo(() => formatSongs(seedSongs), []);
 
-    const sortedSongs = [...filteredSongs].sort((a, b) => a.title.localeCompare(b.title));
+    const filteredSongs = useMemo(() => {
+        return formattedSongs.filter((song) =>
+            song.title.toLowerCase().includes(query.toLowerCase()) ||
+            song.artists.toLowerCase().includes(query.toLowerCase())
+        );
+    }, [formattedSongs, query]);
+
+    const sortedSongs = useMemo(() => {
+        return [...filteredSongs].sort((a, b) => a.title.localeCompare(b.title));
+    }, [filteredSongs]);
 
     return (
         <div className="search-container">
@@ -39,7 +48,7 @@ export const SearchPage = () => {
                         <SongIU
                             key={`${song.albumId}-${song.id}`}
                             song={song}
-                            allSongs={song}
+                            allSongs={sortedSongs}
                         />
                     ))
                 ) : (

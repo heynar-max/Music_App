@@ -62,10 +62,28 @@ export default async function GenrePage({ params }: { params: { genre: string } 
 
             {/* Mostrar las canciones filtradas */}
             <div className="song-list">
-                {filteredSongs.map((song) => (
-                    <SongIU key={song.id} song={song} allSongs={filteredSongs} />
-                ))}
-            </div>
+                {filteredSongs.map((song) => {
+                    const formattedSong = {
+                    ...song,
+                    id: song.id.toString(),
+                    artists: Array.isArray(song.artists) ? song.artists.join(", ") : song.artists,
+                    };
+
+                    const formattedAllSongs = filteredSongs.map((s) => ({
+                    ...s,
+                    id: s.id.toString(),
+                    artists: Array.isArray(s.artists) ? s.artists.join(", ") : s.artists,
+                    }));
+
+                    return (
+                    <SongIU
+                        key={formattedSong.id}
+                        song={formattedSong}
+                        allSongs={formattedAllSongs}
+                    />
+                    );
+                })}
+                </div>
         </div>
     );
 }

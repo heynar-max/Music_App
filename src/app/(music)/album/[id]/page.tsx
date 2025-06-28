@@ -29,7 +29,19 @@ export default function AlbumPage() {
 
         <div className="song-list">
             {albumSongs.map((song) => (
-            <SongIU key={song.id} song={song} />
+            <SongIU
+                key={song.id}
+                song={{
+                ...song,
+                id: song.id.toString(),       // ✅ Convertir a string
+                artists: song.artists.join(", ") // ✅ Si artists es string[]
+                }}
+                allSongs={albumSongs.map(s => ({
+                ...s,
+                id: s.id.toString(),
+                artists: s.artists.join(", ")
+                }))}
+            />
             ))}
         </div>
         </section>

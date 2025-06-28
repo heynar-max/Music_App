@@ -3,7 +3,7 @@ import { SongIU } from "./SongIU"
 import Image from "next/image";
 import { durationToSeconds, secondsToHoursMinutes } from "@/helpers/timeUtils";
 import { useMemo } from "react";
-import { usePlayerStore } from "@/store";
+// import { usePlayerStore } from "@/store";
 
 interface ArtistDetailProps {
     artist: string;
@@ -12,7 +12,9 @@ interface ArtistDetailProps {
   
 export  const ArtistDetail: React.FC<ArtistDetailProps> = ({ artist, onBack }) => {
     // Filtrar canciones que incluyan al artista
-    const artistSongs = songs.filter((song) => song.artists?.includes(artist)) || [];
+    const artistSongs = useMemo(() => 
+      songs.filter((song) => song.artists?.includes(artist)) || [],
+    [artist]);
 
     // Calcular la duración total de las canciones del artista
     const totalDuration = useMemo(() => {
@@ -25,19 +27,19 @@ export  const ArtistDetail: React.FC<ArtistDetailProps> = ({ artist, onBack }) =
     playlist.artists?.includes(artist)
   );
 
-  // Funcionalidad del reproductor
-  const { setCurrentMusic, setIsPlayer } = usePlayerStore();
+  // // Funcionalidad del reproductor
+  // const { setCurrentMusic, setIsPlayer } = usePlayerStore();
 
-  const handlePlayAll = () => {
-    if (artistSongs.length > 0) {
-      setCurrentMusic({
-        playlist: `artist-${artist}`,
-        song: artistSongs[0],
-        songs: artistSongs,
-      });
-      setIsPlayer(true);
-    }
-  };
+  // const handlePlayAll = () => {
+  //   if (artistSongs.length > 0) {
+  //     setCurrentMusic({
+  //       playlist: `artist-${artist}`,
+  //       song: artistSongs[0],
+  //       songs: artistSongs,
+  //     });
+  //     setIsPlayer(true);
+  //   }
+  // };
 
   
     return (
@@ -77,8 +79,16 @@ export  const ArtistDetail: React.FC<ArtistDetailProps> = ({ artist, onBack }) =
           artistSongs.map((song) => (
             <SongIU
               key={`${song.id}-${song.title}`}
-              song={song}
-              allSongs={artistSongs}
+              song={{
+                ...song,
+                id: song.id.toString(),
+                artists: song.artists.join(", "),
+              }}
+              allSongs={artistSongs.map((s) => ({
+                ...s,
+                id: s.id.toString(),
+                artists: s.artists.join(", "),
+              }))}
             />
           ))
         ) : (

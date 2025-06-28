@@ -14,7 +14,7 @@ import { useFavoriteStore } from '@/store/ui/useFavoriteStore'
 import { useSession } from "next-auth/react";
 
 interface Song {
-    id: number;
+    id: string;
     title: string;
     image: string;
     artists: string;
@@ -71,7 +71,7 @@ export const SongIU: React.FC<SongIUProps> = ({ song, allSongs }) => {
     };
 
     const isCurrentSongPlaying = currentMusic.song?.audioUrl === audioUrl && isPlayer;
-    const isFavorite = favorites.includes(song.id);
+    const isFavorite = favorites.includes(Number(song.id));
 
     const { data: session } = useSession();
 
@@ -87,7 +87,7 @@ export const SongIU: React.FC<SongIUProps> = ({ song, allSongs }) => {
                     method: "DELETE",
                 });
 
-                if (res.ok) removeFavorite(song.id);
+                if (res.ok) removeFavorite(Number(song.id));
                 else console.error("No se pudo eliminar el favorito");
             } else {
                 // POST en API
@@ -95,7 +95,7 @@ export const SongIU: React.FC<SongIUProps> = ({ song, allSongs }) => {
                     method: "POST",
                 });
 
-                if (res.ok) addFavorite(song.id);
+                if (res.ok) addFavorite(Number(song.id));
                 else console.error("No se pudo agregar el favorito");
             }
         } catch (error) {

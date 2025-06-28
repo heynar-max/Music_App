@@ -11,6 +11,7 @@ import FavoritePage from "./favorite/page";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { RiSearchLine } from "react-icons/ri";
+import { formatSongs } from "@/utils/formatSong";
 
 
 
@@ -20,7 +21,7 @@ export default function Home() {
   const [activePage, setActivePage] = useState("song");
   const [selectedAlbumId, setSelectedAlbumId] = useState<string | null>(null);
   const [selectedArtist, setSelectedArtist] = useState<string | null>(null);
-
+  
   return (
     <>
       <Title
@@ -130,15 +131,15 @@ const { data: session, status } = useSession();
 }
 
 function SongPage() {
-  const sortedSongs = [...songs].sort((a, b) => a.title.localeCompare(b.title));
+  const formattedSongs = formatSongs([...songs].sort((a, b) => a.title.localeCompare(b.title)));
 
   return (
     <div className="song-list">
-      {sortedSongs.map((song) => (
+      {formattedSongs.map((song) => (
         <SongIU 
           key={`${song.albumId}-${song.id}`} 
           song={song} 
-          allSongs={sortedSongs}  // Pasa todas las canciones ordenadas
+          allSongs={formattedSongs}  // Pasa todas las canciones ordenadas
         />
       ))}
     </div>

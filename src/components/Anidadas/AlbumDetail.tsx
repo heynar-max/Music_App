@@ -1,10 +1,11 @@
 "use client";
 
-import { playlists, songs as allSongs } from "@/seed/seed";
+import { playlists, songs as allSongs, songs } from "@/seed/seed";
 import { SongIU } from "@/components";
 import Image from "next/image";
 import { useEffect, useMemo } from "react";
 import { durationToSeconds, secondsToHoursMinutes } from "@/helpers/timeUtils";
+import { formatSongs } from "@/utils/formatSong";
 
 interface AlbumDetailProps {
     albumId: string;
@@ -65,8 +66,8 @@ export default function AlbumDetail({ albumId, onClose }: AlbumDetailProps) {
                 {albumSongs.map((song) => (
                     <SongIU
                         key={song.id}
-                        song={song}
-                        allSongs={albumSongs} // Esto limita la playlist al álbum
+                        song={formatSongs([song])[0]} // 👈 si es uno solo
+                        allSongs={formatSongs(songs)} // 👈 si es una lista
                     />
                     ))}
                 </div>

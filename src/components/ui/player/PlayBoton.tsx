@@ -1,13 +1,13 @@
 import { usePlayerStore } from "@/store";
 import { RiPlayCircleFill, RiPauseCircleFill } from "react-icons/ri";
-import { playlists, songs } from "@/seed/seed"; // Importa canciones y playlists
-import { Song } from "@prisma/client";
+import { playlists, songs } from "@/seed/seed";
+import { Song as PrismaSong } from "@prisma/client";
 
 interface Props {
     id: string;
     onClick: (e: React.MouseEvent) => void;
     songId?: string;
-    customSongs?: Song[];
+    customSongs?: PrismaSong[];
 }
 
 export const PlayButton = ({ id, onClick, songId, customSongs }: Props) => {
@@ -20,16 +20,30 @@ export const PlayButton = ({ id, onClick, songId, customSongs }: Props) => {
     } = usePlayerStore();
 
     const handleClick = (e: React.MouseEvent) => {
-        onClick(e); // Ejecutar el onClick recibido del padre
+        onClick(e);
 
         const playlistSongs = customSongs
-            ? customSongs.map(s => ({ ...s, id: String(s.id) }))
+            ? customSongs.map(s => ({
+                id: String(s.id),
+                title: s.title,
+                artists: Array.isArray(s.artists) ? s.artists.join(', ') : s.artists,
+                image: s.image,
+                audioUrl: s.audioUrl,
+                duration: s.duration ? Number(s.duration) : undefined
+            }))
             : (() => {
                 const playlist = playlists.find(p => p.id === id);
                 if (!playlist) return [];
                 return songs
                     .filter(s => s.albumId === playlist.albumId)
-                    .map(s => ({ ...s, id: String(s.id) }));
+                    .map(s => ({
+                        id: String(s.id),
+                        title: s.title,
+                        artists: Array.isArray(s.artists) ? s.artists.join(', ') : s.artists,
+                        image: s.image,
+                        audioUrl: s.audioUrl,
+                        duration: s.duration ? Number(s.duration) : undefined
+                    }));
             })();
 
         if (playlistSongs.length === 0) return;
@@ -40,7 +54,6 @@ export const PlayButton = ({ id, onClick, songId, customSongs }: Props) => {
 
         if (!songToPlay) return;
 
-        // Si estamos en la misma playlist/canción, alternar reproducción
         if (currentMusic.playlist === id && (!songId || currentMusic.song?.id === songToPlay.id)) {
             toggleIsPlayer();
             return;
