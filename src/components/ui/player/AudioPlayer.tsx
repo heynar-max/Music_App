@@ -17,8 +17,22 @@ import { useFavoriteStore } from "@/store/ui/useFavoriteStore";
 import Image from "next/image";
 import { IoVolumeHigh, IoVolumeMute } from "react-icons/io5";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
+
+// ✅ Hook para detectar si la pantalla es móvil
+    const useIsMobile = () => {
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth < 800);
+        check();
+        window.addEventListener("resize", check);
+        return () => window.removeEventListener("resize", check);
+    }, []);
+    return isMobile;
+    };
 
 export const Player = () => {
+    const isMobile = useIsMobile();
     const audioRef = useRef<HTMLAudioElement>(null);
     const [volume, setVolume] = useState(0.7);
     const [isMuted, setIsMuted] = useState(false);
@@ -159,10 +173,138 @@ export const Player = () => {
             setIsFavorite(false);
         }
     };
+    
 
     return (
         <div className="player_container">
             <div className="player_content">
+                {isMobile ? (
+            <Link href="/player" passHref legacyBehavior>
+                <a className="player_clickable">
+                <div className="player_content_web">
+                    {/* contenido del reproductor aquí (el mismo que ya tienes) */}
+                    <div className="player_image-container">
+                    {currentMusic.song ? (
+                        <>
+                        <Image
+                            src={currentMusic.song.image}
+                            alt={`Portada de ${currentMusic.song.title}`}
+                            width={40}
+                            height={40}
+                            className="player_image"
+                        />
+                        <div className="player_track-info">
+                            <span className="player_title">{currentMusic.song.title}</span>
+                            <span className="player_artist">{currentMusic.song.artists}</span>
+                        </div>
+                        </>
+                    ) : (
+                        <div className="player_image-placeholder">
+                        <span></span>
+                        </div>
+                    )}
+                    <div className="player_favorite">
+                        <button
+                        className="card-meta-button"
+                        onClick={handleFavorite}
+                        title="Favorito"
+                        >
+                        {isFavorite ? (
+                            <RiHeart3Fill className="player_icon_favorite" />
+                        ) : (
+                            <RiHeartAddLine className="player_icon_favorite" />
+                        )}
+                        </button>
+                    </div>
+                    </div>
+
+                    {/* CONTROLES */}
+                        <div className="player_controls">
+                            <div className="player_progress-container">
+                                <span className="player_time">{formatTime(currentTime)}</span>
+                                <input
+                                    type="range"
+                                    min="0"
+                                    max={duration || 100}
+                                    value={currentTime}
+                                    onChange={handleProgressChange}
+                                    className="player_progress"
+                                    disabled={!currentMusic.song}
+                                    style={{
+                                        background: duration
+                                            ? `linear-gradient(to right, var(--c-gray-900) 0%, var(--c-gray-900) ${
+                                                (currentTime / duration) * 100
+                                            }%, #f9bc73 ${(currentTime / duration) * 100}%)`
+                                            : undefined,
+                                    }}
+                                />
+
+                                
+                                <span className="player_time">{formatTime(duration)}</span>
+                            </div>
+                            <div className="player_favorite_mobile">
+                                <button
+                                    className="card-meta-button"
+                                    onClick={handleFavorite}
+                                    title={
+                                        session?.user
+                                            ? "Agregar o quitar de favoritos"
+                                            : "Debes iniciar sesión para agregar a favoritos"
+                                    }
+                                >
+                                    {isFavorite ? (
+                                        <RiHeart3Fill className="player_icon_favorite" />
+                                    ) : (
+                                        <RiHeartAddLine className="player_icon_favorite" />
+                                    )}
+                                </button>
+                            </div>
+                            <div className="player_buttons">
+                                <button
+                                    onClick={toggleShuffle}
+                                    className={`player_boton_toggle ${isShuffle ? "active" : ""}`}
+                                    title="Modo aleatorio"
+                                >
+                                    <RiShuffleFill />
+                                </button>
+
+                                <button
+                                    className="player_boton_next"
+                                    onClick={playPreviousSong}
+                                    title="Anterior"
+                                >
+                                    <RiSkipBackFill />
+                                </button>
+
+                                <button className="player_boton" onClick={toggleIsPlayer}>
+                                    {isPlayer ? (
+                                        <RiPauseCircleFill className="player_icon" title="Pausa" />
+                                    ) : (
+                                        <RiPlayCircleFill className="player_icon" title="Play" />
+                                    )}
+                                </button>
+
+                                <button
+                                    className="player_boton_next"
+                                    onClick={playNextSong}
+                                    title="Siguiente"
+                                >
+                                    <RiSkipForwardFill />
+                                </button>
+
+                                <button
+                                    onClick={toggleRepeat}
+                                    className={`player_boton_toggle ${isRepeat ? "active" : ""}`}
+                                    title="Repetir"
+                                >
+                                    <RiRepeatOneFill />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </Link>
+                ) : (
                 <div className="player_content_web">
                     <div className="player_image-container">
                         {currentMusic.song ? (
@@ -223,9 +365,11 @@ export const Player = () => {
                                         : undefined,
                                 }}
                             />
+
+                            
                             <span className="player_time">{formatTime(duration)}</span>
                         </div>
-<div className="player_favorite_mobile">
+                        <div className="player_favorite_mobile">
                             <button
                                 className="card-meta-button"
                                 onClick={handleFavorite}
@@ -310,6 +454,7 @@ export const Player = () => {
                     </div>
                 </div>
 
+)}
                 {/* MOBILE PROGRESS */}
                 <div className="player_progress-container_mobile">
                     <span className="player_time_mobile">{formatTime(currentTime)}</span>

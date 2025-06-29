@@ -10,6 +10,7 @@ import "../style/Card.css";
 import "../style/genero.css";
 import "../style/PageMusicId.css";
 import "../style/Login.css";
+import "../style/playermobile.css";
 import { Provider } from "@/components";
 
 const geistSans = localFont({

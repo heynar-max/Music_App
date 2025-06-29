@@ -1,0 +1,67 @@
+.player-full-page {
+    min-height: 100vh;
+    color: rgb(8, 8, 8);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.player-full-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-full-image img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.player-full-info {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.player-full-title {
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+.player-full-artists {
+    font-size: 1rem;
+    color: #9ca3af; /* similar to text-gray-400 */
+}
+
+.player-full-progress {
+    width: 100%;
+    max-width: 480px;
+    margin-top: 1rem;
+}
+
+.player-full-progress input[type="range"] {
+    width: 100%;  
+}
+
+.player-full-time {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.player-full-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.player-full-favorite {
+    margin-top: 1rem;
+}

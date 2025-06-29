@@ -286,6 +286,12 @@ color: #f9bc73;
     .player_favorite{
         display: none;
     }
+
+    .player_clickable {
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    }
 }
 
 
