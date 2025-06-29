@@ -225,7 +225,23 @@ export const Player = () => {
                             />
                             <span className="player_time">{formatTime(duration)}</span>
                         </div>
-
+<div className="player_favorite_mobile">
+                            <button
+                                className="card-meta-button"
+                                onClick={handleFavorite}
+                                title={
+                                    session?.user
+                                        ? "Agregar o quitar de favoritos"
+                                        : "Debes iniciar sesión para agregar a favoritos"
+                                }
+                            >
+                                {isFavorite ? (
+                                    <RiHeart3Fill className="player_icon_favorite" />
+                                ) : (
+                                    <RiHeartAddLine className="player_icon_favorite" />
+                                )}
+                            </button>
+                        </div>
                         <div className="player_buttons">
                             <button
                                 onClick={toggleShuffle}

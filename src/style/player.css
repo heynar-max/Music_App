@@ -254,7 +254,9 @@ color: #f9bc73;
 
     .player_controls {
         display: flex;
-        align-items: flex-end;
+        align-items: center;
+        flex-direction: row;
+        justify-content: flex-end;
     }
     .player_favorite_mobile{
         display: flex;
